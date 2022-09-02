@@ -1,0 +1,118 @@
+<!-- Updated HTML WITH BOOTSTRAP/MDI/FONT-AWESOME/GOOGLE-FONTS/DEBUG/SCRIPTS -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Document</title>
+    <!-- NOTE Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- NOTE MDI ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- NOTE GoogleFonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Orbitron:wght@500&family=Poppins:wght@200&family=Roboto:ital,wght@1,300&family=Titan+One&display=swap"
+      rel="stylesheet"
+      />
+      <!-- NOTE style.css -->
+      <link rel="stylesheet" href="style.css" />
+      
+    </head>
+    <!-- SECTION STYLES -->
+    <style>
+      body.debug .container,
+      body.debug .container-fluid {
+        outline: 2px double blue;
+    outline-offset: -2px;
+  }
+  
+  body.debug .row {
+    outline: 2px dashed red;
+    outline-offset: -2px;
+  }
+  
+  body.debug [class*="col-"] {
+    outline: 2px dotted forestgreen;
+    outline-offset: -3px;
+  }
+</style>
+<!-- !SECTION -->
+
+
+
+
+<body class="debug">
+  <header class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>MOON MINER TUNG</h1>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="container pt-3">
+      <div class="row justify-content-center">
+        <div onclick="mine()" class="orb col-md-6 d-flex justify-content-center">
+          <!-- GIF IMAGE HERE -->
+          <img onclick="" src="https://64.media.tumblr.com/08e067f324fe4667c381990355329c97/tumblr_n5u9j9NycV1rf78nfo1_400.gifv" alt="Insulated" class="img-fluid rounded-circle">
+      </div>
+    </section>
+<!-- SECTION click Count and automatic Click Count -->
+    <section class="container-fluid justify-content-center menubar">
+      <div class="row justify-content-center">
+        <div class="col-md-3 bg-info d-flex "><span id="clickCount-bonus">clickCountBonus:</span></div>
+        <div class="col-md-1 bg-light  rounded-top d-flex  justify-content-center ">
+          <span>Orbs:</span>
+<!-- <img src="https://c.tenor.com/adJYEUbjbSgAAAAd/pondering-my-orb-monkey-swimming.gif" alt="" style="width:10rem;height:10rem"> -->
+<span id="orb-amount" class="text-danger"><p>0</p></span>
+        </div>
+        <div class="col-md-3 bg-danger">
+         <span id="autoClickCount-bonus">laserbonus:</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION UPGRADES -->
+    <section class="container-fluid">
+      <div class="row justify-content-center ">
+        <div class="col-md-5 bg-warning text-light justify-content-center ">
+          <div class="container-fluid">
+            <div class="row py-5">
+              <div class="col-md-6">CLICK UPGRADES</div>
+              <div class="col-md-6">AUTO UPGRADES</div>
+              <div class="col-md-6 mt-1 ">
+            <button  onclick="upgradeOne()" class="btn btn-info"> Pickaxe</button>
+            <span id="pickaxe-count"></span>
+            <button onclick="upgradeTwo()" class="btn btn-info mt-2 mb-1"> Mega Pickaxe</button>
+            <span id='megapickaxe-count'></span>
+          </div>
+              <div class="col-md-6">
+               
+              <button onclick="autoUpgradeOne()" id="pickaxe-upgrade" class="btn btn-danger"> Laser</button>
+              <span id='laser-count'></span>
+              <button onclick="autoUpgradeTwo()" class="btn btn-danger mt-2 mb-1"> MegaLaser</button>
+              <span id='megalaser-count'></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 bg-warning text-light justify-content-center">TEST</div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  
+  
+  
+  <!-- SECTION SCRIPTS -->
+  <script
+  src="https://kit.fontawesome.com/a2d3ad0e84.js"
+  crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous" defer></script>
+  <script src="app.js"></script>
+  <!-- !SECTION -->
+</body>
+</html>

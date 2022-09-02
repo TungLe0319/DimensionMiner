@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&family=Oswald&family=Roboto&display=swap');
+
+* {
+  font-family: 'Audiowide', cursive;
+}
+
+.menubar{
+  margin-top: 8rem;
+}
+
+main{
+  height: 100vh;
+  background-image: url(https://images.hdqwalls.com/download/3-dimensional-abstract-ux-3840x2160.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.orb{
+  user-select: none;
+  cursor: pointer;
+}
+
+/* .clickEffect{
+  position:fixed;
+  box-sizing:border-box;
+  border-style:solid;
+  border-color:#ffbf00;
+  border-radius:50%;
+  animation:clickEffect 0.4s ease-out;
+  z-index:99999;
+  }
+  @keyframes clickEffect{
+  0%{
+  opacity:1;
+  width:0.5em; height:0.5em;
+  margin:-0.25em;
+  border-width:0.5em;
+  }
+  100%{
+  opacity:0.2;
+  width:15em; height:15em;
+  margin:-7.5em;
+  border-width:0.03em;
+  }
+  } */
