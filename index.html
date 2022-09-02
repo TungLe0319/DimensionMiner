@@ -43,7 +43,7 @@
 
 
 
-<body class="debug">
+<body class="">
   <header class="container-fluid">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -89,15 +89,19 @@
 <!-- SECTION click Count and automatic Click Count -->
     <section class="container-fluid justify-content-center menubar">
       <div class="row justify-content-center">
-        <div class="col-md-3 bg-info d-flex "><span id="clickCount-bonus">clickCountBonus:</span></div>
+        <!-- STUB clickcount-bonus -->
+        <div class="col-md-3 bg-info d-flex ">
+          <div><small>Click Bonus Applied:</small></div><span id="clickCount-bonus" class=""></span></div>
         <div class="col-md-2 bg-light  rounded-top d-flex   justify-content-evenly fs-2 mx-1 ">
           <span><img src="./resources/Orbs.png" alt="" style="width: 3rem;">'s:</span>
 <!-- <img src="https://c.tenor.com/adJYEUbjbSgAAAAd/pondering-my-orb-monkey-swimming.gif" alt="" style="width:10rem;height:10rem"> -->
 <span id="orb-amount" class="text-danger "><p>0</p></span>
         </div>
         <div class="col-md-3 bg-danger">
-         
-         <span id="autoClickCount-bonus">laserbonus:</span>
+         <!-- autoClickCount-Bonus -->
+         <div><img src="./resources/hourglass.png" alt="" class="mt-2" style="width: 3rem;"> <span id="timer" class="text-warning">3</span></div>
+        <span>AutomaticBonus:</span>
+         <span id="autoClickCount-bonus">0</span>
         </div>
       </div>
     </section>
@@ -116,7 +120,7 @@
               <div class="col-md-6">AUTO UPGRADES</div>
               <div class="col-md-6 mt-1 border border-3 border-warning rounded py-2 ">
                 <!-- PICKAXE -->
-                <img  onclick="upgradeOne()" src="./resources/pickaxe.png" alt="" class="cursor-stuff itemglow rounded-circle" style="width: 4rem;">
+                <img  onclick="upgrade('pickaxe')" src="./resources/pickaxe.png" alt="" class="cursor-stuff itemglow rounded-circle" style="width: 4rem;">
                 
               
                    <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
@@ -128,7 +132,7 @@
            <!-- ---------------- -->
            <!-- MEGA PICK AXE -->
             
-            <img  id="pickimg" onclick="upgradeTwo()" src="./resources/pickaxe.png" alt="" class="cursor-stuff megapickaxe mt-2 itemglow rounded-circle" style="width: 4rem;">
+            <img  id="pickimg" onclick="upgrade('megapickaxe')" src="./resources/pickaxe.png" alt="" class="cursor-stuff megapickaxe mt-2 itemglow rounded-circle" style="width: 4rem;">
             
             <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
             <small>x100</small>
@@ -138,7 +142,7 @@
             <span id='megapickaxe-count' class="text-danger">0</span>
             <!-- ------------- -->
             <!-- ULTRA PICK -->
-            <img  id="pickimg" onclick="upgradeThree()" src="./resources/pickaxe.png" alt="" class="cursor-stuff ultramegapickaxe mt-2 itemglow rounded-circle" style="width: 4rem;">
+            <img  id="pickimg" onclick="upgrade('ultrapickaxe')" src="./resources/pickaxe.png" alt="" class="cursor-stuff ultramegapickaxe mt-2 itemglow rounded-circle" style="width: 4rem;">
             
             <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
             <small>x500</small>
@@ -150,7 +154,7 @@
           </div>
               <div class="col-md-6 mt-1 border border-3 border-warning rounded py-2 ">
                 <!-- autoupgradeone -->
-                <img  onclick="autoUpgradeOne()" src="./resources/AlienGun.png" alt="" class="cursor-stuff itemglow rounded-circle" style="width: 4rem;">
+                <img  onclick="autoUpgradesLaser('laser')" src="./resources/AlienGun.png" alt="" class="cursor-stuff itemglow rounded-circle" style="width: 4rem;">
                 
               
                 <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
@@ -161,7 +165,7 @@
         <span id="laser-count" class="text-danger">0</span>
 <!-- -------------------- -->
 <!-- autoupgradetwo -->
-<img  onclick="autoUpgradeTwo()" src="./resources/AlienGun.png" alt="" class="cursor-stuff megalaser itemglow rounded-circle my-2" style="width: 4rem;">
+<img  onclick="autoUpgradesLaser('megalaser')" src="./resources/AlienGun.png" alt="" class="cursor-stuff megalaser itemglow rounded-circle my-2" style="width: 4rem;">
                 
               
 <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
@@ -169,10 +173,10 @@
 
 
 <span><small>laser</small></span>
-<span id="laser-count" class="text-danger">0</span>
+<span id="megalaser-count" class="text-danger">0</span>
 <!-- ---------------- -->
 <!-- autoupgrade3 -->
-<img  onclick="autoUpgradeThree()" src="./resources/AlienGun.png" alt="" class="cursor-stuff ultralaser itemglow rounded-circle" style="width: 4rem;">
+<img  onclick="autoUpgradesLaser('ultralaser')" src="./resources/AlienGun.png" alt="" class="cursor-stuff ultralaser itemglow rounded-circle" style="width: 4rem;">
                 
               
 <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
@@ -180,7 +184,7 @@
 
 
 <span><small>laser</small></span>
-<span id="laser-count" class="text-danger">0</span>
+<span id="ultralaser-count" class="text-danger">0</span>
 <!-- ------------- -->
            
            
@@ -195,12 +199,9 @@
             <div class="col-md-6">CLICK STATS</div>
             <div class="col-md-6">AUTOMATIC STATS</div>
             <div class="col-md-6 mt-1 ">
-              <img  onclick="upgradeOne()" src="./resources/pickaxe.png" alt="" class="cursor-stuff " style="width: 4rem;">
-         
-          <span id="pickaxe-count"></span>
+              <!-- PROGRESS BAR -->
+              
           
-          <img  id="pickimg" onclick="upgradeTwo()" src="./resources/pickaxe.png" alt="" class="cursor-stuff megapickaxe " style="width: 4rem;">
-          <span id='megapickaxe-count'></span>
         </div>
             <div class="col-md-6 d-flex">
              

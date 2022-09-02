@@ -58,6 +58,9 @@ filter: hue-rotate(120deg);
   transition: ease-in-out .3s;
   box-shadow:0 0 10px rgb(187, 245, 255);
 }
+
+
+
 /* .statstest{
   background-image: url(https://media3.giphy.com/media/qDqBVEMsY39PIU3DCY/giphy.gif?cid=ecf05e47e5gkt7cmiv8ew8aujoqbjf76ws1ouy6l4bqyrikv&rid=giphy.gif&ct=s);
 } */
@@ -86,6 +89,38 @@ filter: hue-rotate(120deg);
   } */
 
 
+  .progress-bar__container {
+    width: 80%;
+    height: 2rem;
+    border-radius: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s;
+    will-change: transform;
+    box-shadow: 0 0 5px #e76f51;
+  }
+  
+  .progress-bar {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    content: "";
+    background-color: #e76f51;
+    top:0;
+    bottom: 0;
+    left: -100%;
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color: white;
+    font-family: sans-serif;
+  }
+  
+  .progress-bar__text {
+    display: none;
+  }
+
   @keyframes animateHeart {
     0% {
       transform: scale(0.8);
@@ -113,6 +148,8 @@ filter: hue-rotate(120deg);
    
   }
 
+
+  
   .heart:hover{
 
     transition: ease-in-out .3s;
