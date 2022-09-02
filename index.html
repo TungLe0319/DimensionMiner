@@ -53,57 +53,172 @@
   </header>
   <main>
     <section class="container pt-3">
-      <div class="row justify-content-center">
-        <div onclick="mine()" class="orb col-md-6 d-flex justify-content-center">
+      <div class="row justify-content-evenly">
+
+        
+        <div id="cookie" onclick="mine()" class="orb  col-md-3 d-flex justify-content-center">
           <!-- GIF IMAGE HERE -->
-          <img onclick="" src="https://64.media.tumblr.com/08e067f324fe4667c381990355329c97/tumblr_n5u9j9NycV1rf78nfo1_400.gifv" alt="Insulated" class="img-fluid rounded-circle">
+          <img id="atomOrb" onclick="" src="https://64.media.tumblr.com/08e067f324fe4667c381990355329c97/tumblr_n5u9j9NycV1rf78nfo1_400.gifv" alt="Insulated" class="img-fluid rounded-circle heart">
+      </div>
       </div>
     </section>
+    <!-- SECTION MARQUEE LAZER -->
+    <section class="container-fluid alienandlaser">
+     
+      <div class="row ">
+       <div class="col-md-12 d-flex align-content-center">
+                 <marquee id="lasermarquee" width="100%" direction="right" height="">
+     <img src="https://media2.giphy.com/media/1rOy1l3mulySaqilto/giphy.gif?cid=ecf05e47oc9d0htfhowppmrlwdqgkhipbq2wuokomsbcvi6f&rid=giphy.gif&ct=s" alt="" srcset="" style="width: 2rem;">
+      </marquee>
+       </div>
+    
+        
+      </div>
+      <div class="row ">
+        <div class="col-md-12 d-flex align-content-center">
+                  <marquee id="alienmarquee" width="100%" direction="right" height="">
+      <img src="./resources/Alien.png" alt="" srcset="" style="width: 2rem;">
+       </marquee>
+        </div>
+     
+         
+       </div>
+    </section>
+ 
+    <!-- ---------- -->
 <!-- SECTION click Count and automatic Click Count -->
     <section class="container-fluid justify-content-center menubar">
       <div class="row justify-content-center">
         <div class="col-md-3 bg-info d-flex "><span id="clickCount-bonus">clickCountBonus:</span></div>
-        <div class="col-md-1 bg-light  rounded-top d-flex  justify-content-center ">
-          <span>Orbs:</span>
+        <div class="col-md-2 bg-light  rounded-top d-flex   justify-content-evenly fs-2 mx-1 ">
+          <span><img src="./resources/Orbs.png" alt="" style="width: 3rem;">'s:</span>
 <!-- <img src="https://c.tenor.com/adJYEUbjbSgAAAAd/pondering-my-orb-monkey-swimming.gif" alt="" style="width:10rem;height:10rem"> -->
-<span id="orb-amount" class="text-danger"><p>0</p></span>
+<span id="orb-amount" class="text-danger "><p>0</p></span>
         </div>
         <div class="col-md-3 bg-danger">
+         
          <span id="autoClickCount-bonus">laserbonus:</span>
         </div>
       </div>
     </section>
 
-    <!-- SECTION UPGRADES -->
+    <!-- UPGRADES -->
     <section class="container-fluid">
       <div class="row justify-content-center ">
-        <div class="col-md-5 bg-warning text-light justify-content-center ">
+        <!-- <div class="col-md-1 me-5">
+          <img src="https://i.giphy.com/media/L2UHsn6f4Vmw4Dt8p3/giphy.webp" alt="" style="width: 10rem;">
+        </div> -->
+        <!-- SECTION CLICK UPGRADES -->
+        <div class="col-md-5 bg-dark text-light justify-content-center ">
           <div class="container-fluid">
-            <div class="row py-5">
+            <div class="row py-1 mb-4">
               <div class="col-md-6">CLICK UPGRADES</div>
               <div class="col-md-6">AUTO UPGRADES</div>
-              <div class="col-md-6 mt-1 ">
-            <button  onclick="upgradeOne()" class="btn btn-info"> Pickaxe</button>
-            <span id="pickaxe-count"></span>
-            <button onclick="upgradeTwo()" class="btn btn-info mt-2 mb-1"> Mega Pickaxe</button>
-            <span id='megapickaxe-count'></span>
+              <div class="col-md-6 mt-1 border border-3 border-warning rounded py-2 ">
+                <!-- PICKAXE -->
+                <img  onclick="upgradeOne()" src="./resources/pickaxe.png" alt="" class="cursor-stuff itemglow rounded-circle" style="width: 4rem;">
+                
+              
+                   <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
+                  <small>x20</small>
+                
+                
+           <span><small>pickaxe</small></span>
+           <span id="pickaxe-count" class="text-danger">0</span>
+           <!-- ---------------- -->
+           <!-- MEGA PICK AXE -->
+            
+            <img  id="pickimg" onclick="upgradeTwo()" src="./resources/pickaxe.png" alt="" class="cursor-stuff megapickaxe mt-2 itemglow rounded-circle" style="width: 4rem;">
+            
+            <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
+            <small>x100</small>
+          
+          
+     <span><small>Mega</small></span>
+            <span id='megapickaxe-count' class="text-danger">0</span>
+            <!-- ------------- -->
+            <!-- ULTRA PICK -->
+            <img  id="pickimg" onclick="upgradeThree()" src="./resources/pickaxe.png" alt="" class="cursor-stuff ultramegapickaxe mt-2 itemglow rounded-circle" style="width: 4rem;">
+            
+            <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
+            <small>x500</small>
+          
+          
+     <span><small>Ultra</small></span>
+            <span id='ultraPickaxe-count' class="text-danger">0</span>
+            <!-- ---------- -->
           </div>
-              <div class="col-md-6">
-               
-              <button onclick="autoUpgradeOne()" id="pickaxe-upgrade" class="btn btn-danger"> Laser</button>
-              <span id='laser-count'></span>
-              <button onclick="autoUpgradeTwo()" class="btn btn-danger mt-2 mb-1"> MegaLaser</button>
-              <span id='megalaser-count'></span>
+              <div class="col-md-6 mt-1 border border-3 border-warning rounded py-2 ">
+                <!-- autoupgradeone -->
+                <img  onclick="autoUpgradeOne()" src="./resources/AlienGun.png" alt="" class="cursor-stuff itemglow rounded-circle" style="width: 4rem;">
+                
+              
+                <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
+               <small>x100</small>
+             
+             
+        <span><small>laser</small></span>
+        <span id="laser-count" class="text-danger">0</span>
+<!-- -------------------- -->
+<!-- autoupgradetwo -->
+<img  onclick="autoUpgradeTwo()" src="./resources/AlienGun.png" alt="" class="cursor-stuff megalaser itemglow rounded-circle my-2" style="width: 4rem;">
+                
+              
+<img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
+<small>x500</small>
+
+
+<span><small>laser</small></span>
+<span id="laser-count" class="text-danger">0</span>
+<!-- ---------------- -->
+<!-- autoupgrade3 -->
+<img  onclick="autoUpgradeThree()" src="./resources/AlienGun.png" alt="" class="cursor-stuff ultralaser itemglow rounded-circle" style="width: 4rem;">
+                
+              
+<img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
+<small>x1000</small>
+
+
+<span><small>laser</small></span>
+<span id="laser-count" class="text-danger">0</span>
+<!-- ------------- -->
+           
+           
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-5 bg-warning text-light justify-content-center">TEST</div>
+
+        <!-- SECTION STATS -->
+        <div class="statstest col-md-5 text-light bg-warning justify-content-center"><div class="container-fluid">
+          <div class="row py-1 mb-4">
+            <div class="col-md-6">CLICK STATS</div>
+            <div class="col-md-6">AUTOMATIC STATS</div>
+            <div class="col-md-6 mt-1 ">
+              <img  onclick="upgradeOne()" src="./resources/pickaxe.png" alt="" class="cursor-stuff " style="width: 4rem;">
+         
+          <span id="pickaxe-count"></span>
+          
+          <img  id="pickimg" onclick="upgradeTwo()" src="./resources/pickaxe.png" alt="" class="cursor-stuff megapickaxe " style="width: 4rem;">
+          <span id='megapickaxe-count'></span>
+        </div>
+            <div class="col-md-6 d-flex">
+             
+            <img src="./resources/AlienGun.png" onclick="autoUpgradeOne()" id="pickaxe-upgrade" class="cursor-stuff itemglow" style="width: 4rem;"> Laser
+            <span id='laser-count'></span>
+            <img src="./resources/AlienGun.png" onclick="autoUpgradeTwo()" class=" cursor-stuff itemglow" style="width: 4rem;"> MegaLaser
+            <span id='megalaser-count'></span>
+            </div>
+          </div>
+        </div></div>
       </div>
     </section>
   </main>
   <footer></footer>
   
+  <template id="floating-text-template">
+    <!-- your existing code -->
+  </template>
   
   
   <!-- SECTION SCRIPTS -->
