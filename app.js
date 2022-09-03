@@ -1,8 +1,8 @@
 let clickUpgrades = [
-  { name: 'startingPick', price: 0, quantity: 1, multiplier: 0},
+  { name: 'startingPick', price: 0, quantity: 0, multiplier: 0 },
   { name: 'pickaxe', price: 5, quantity: 0, multiplier: 1 },
   { name: 'megapickaxe', price: 100, quantity: 0, multiplier: 5 },
-  { name: 'ultrapickaxe', price: 1000, quantity: 0, multiplier: 20},
+  { name: 'ultrapickaxe', price: 1000, quantity: 0, multiplier: 20 },
 ];
 
 let automaticUpgrades = [
@@ -12,33 +12,31 @@ let automaticUpgrades = [
 ];
 
 // upgrade ARRAYS
-let upgrades = [
-  {
-    name: 'startingClick',
-    price: 0,
-    quantity: 0,
-    multiplier: 1,
-  },
-];
+// let upgrades = [
+//   {
+//     name: 'startingClick',
+//     price: 0,
+//     quantity: 0,
+//     multiplier: 1,
+//   },
+// ];
 
-let autoUpgrades = [
-  {
-    name: ' starting auto',
-    price: 0,
-    quantity: 0,
-    multiplier: 0,
-  },
-];
-
-// let pickle = upgrades.find( pickle => pickle.name == 'pickaxe')
+// let autoUpgrades = [
+//   {
+//     name: ' starting auto',
+//     price: 0,
+//     quantity: 0,
+//     multiplier: 0,
+//   },
+// ];
 
 // GLOBAL VARIABLES]
-
+// TOTAL RESOURCES
 let orbs = 0;
-let pickaxeTotal= 0
+let clicking = false;
 let laserCountBonus = 0;
 
-let clickCountBonus = 0;
+let clickCountBonus = 1;
 // ----------------
 let orbDOM = document.getElementById('orb-amount');
 let megaPickaxeCountDOM = document.getElementById('megapickaxe-count');
@@ -49,6 +47,10 @@ let megaLaserCountDOM = document.getElementById('megalaser-count');
 let ultraLaserCountDOM = document.getElementById('ultralaser-count');
 let clickCountBonusDOM = document.getElementById('clickCount-bonus');
 let laserCountBonusDOM = document.getElementById('autoClickCount-bonus');
+let pickaxeCostDOM = document.getElementById('pickaxe-cost');
+let MegaPickAxeCostDOM = document.getElementById('megapickaxe-cost');
+let ultraPickAxeCostDOM = document.getElementById('ultrapickaxe-cost');
+let atomOrbDOM = document.getElementById('atomOrb');
 // -----------------------------
 // let pickaxe = clickUpgrades.find((upgrade) => upgrade.name == 'pickaxe');
 let pickaxe = clickUpgrades.find((pickle) => pickle.name == 'pickaxe');
@@ -61,23 +63,21 @@ let megaLaser = automaticUpgrades.find((pickle) => pickle.name == 'megalaser');
 let ultraLaser = automaticUpgrades.find(
   (pickle) => pickle.name == 'ultralaser'
 );
+// STUB FOR TIMER
+let timerSeconds = 3;
 
 function mine() {
-  // TODO WHAT I WANT IS THE MULTIPLYER TIMES THE QUANTITY
-  
-
-orbs ++
+  orbs += clickCountBonus;
   addLaser();
   addAlien();
   colorchange();
-drawTotalClick()
   drawCounts();
+  changeImage();
+  console.log(clickUpgrades);
 }
-
 
 function drawCounts() {
   clickCountBonusDOM.innerText = clickCountBonus;
- 
   pickaxeCountDOM.innerText = pickaxe.quantity;
   megaPickaxeCountDOM.innerText = megaPickAxe.quantity;
   ultraPickaxeCountDOM.innerText = ultraPickAxe.quantity;
@@ -85,137 +85,69 @@ function drawCounts() {
   megaLaserCountDOM.innerText = megaLaser.quantity;
   ultraLaserCountDOM.innerText = ultraLaser.quantity;
   laserCountBonusDOM.innerText = laserCountBonus;
+  orbDOM.innerText = orbs;
+  pickaxeCostDOM.innerText = pickaxe.price;
+  MegaPickAxeCostDOM.innerText = megaPickAxe.price;
+  ultraPickAxeCostDOM.innerText = ultraPickAxe.price;
 }
 
-function drawTotalClick(){
- 
-  clickUpgrades.forEach(clicker =>{
-    orbs += clicker.multiplier * clicker.quantity
-  })
-  console.log('click bonus',clickCountBonus);
-  orbDOM.innerText==orbs
-}
+// function totalClickBonus(){
 
-/* on the specific icon onclick event takes in the name in HTML then checks if it matches data in JS array.
- if true then goes down last matching the if's orbs >= the selected Item's price in the array if true then allows the upgrade
- TRYING OUT replaceting the clickcount bonus += 5 or 20 with clickCountBonus += picks.multipler 
- TODO would like to add where it doesn't constantly push a new item into the array*/
+//   clickUpgrades.forEach(clicker =>{
+//     clickCountBonus += clicker.multiplier * clicker.quantity
+//   })
+//   console.log('click bonus',clickCountBonus);
+//   orbDOM.innerText=orbs
+// }
+
+// function drawAutomaticBonus(){
+//   automaticUpgrades.forEach(laser => {
+//     orbs += laser.multiplier*laser.quantity
+//   })
+//   orbDOM.innerText=orbs
+// }
+
+//  STUB FOR CLICKUPGRADES
 function upgrade(name) {
   let picks = clickUpgrades.find((upgrade) => upgrade.name == name);
-  
- if (orbs >= picks.price) {
-  orbs -= picks.price
-  picks.quantity++
-  
- }
 
- 
-  
-  // if (orbs >= pickaxe.price) {
-  //   orbs -= pickaxe.price;
-  //  pickaxe.quantity++
-    
-  //   clickCountBonus+= 1
-  // }
-  // if (orbs >= megaPickAxe.price) {
-  //   orbs -= megaPickAxe.price;
-  //  megaPickAxe.quantity++
-   
-  //   clickCountBonus+= 5
-  // }
-  // if (orbs >= ultraPickAxe.price) {
-  //   orbs -= ultraPickAxe.price;
-  //  ultraPickAxe.quantity++
-   
-  //   clickCountBonus+= 20
-  // }
-
+  if (orbs >= picks.price) {
+    orbs -= picks.price;
+    picks.quantity++;
+    clickCountBonus += picks.multiplier;
+    picks.price += picks.quantity * 2;
+    console.log(picks.price);
+  }
   drawCounts();
 }
-
-// SECTION CLICK UPGRADES
-// function upgradeOne() {
-//   if (orbs >= 5) {
-//     orbs -= 5;
-//     upgrades.push(clickUpgrades[0]);
-//     pickaxeCount++;
-//     clickCountBonus++
-//   }
-//   console.log(upgrades);
-//   drawCounts();
-
-// }
-// function upgradeTwo() {
-//   if (orbs >= 100) {
-
-//     orbs -= 100;
-//     upgrades.push(clickUpgrades[1]);
-//     megaPickaxeCount++;
-//     clickCountBonus+= 5
-//   }
-//   console.log(upgrades);
-//   drawCounts();
-// }
-
-// change back to 500 later, using 10 for testing
-// change -= back to 500
-// function upgradeThree() {
-//   if (orbs >= 10) {
-
-//     orbs -= 10;
-//     upgrades.push(clickUpgrades[2]);
-//     ultraPickaxeCount++;
-//     clickCountBonus+=20
-//   }
-//   console.log(upgrades);
-//   drawCounts();
-
-// }
-
+// STUB FOR AUTO UPGRADES
 function autoUpgradesLaser(name) {
   let laser = automaticUpgrades.find((laser) => laser.name == name);
   if (orbs >= laser.price) {
     orbs -= laser.price;
-    autoUpgrades.push(laser);
+
     laser.quantity++;
 
     laserCountBonus += laser.multiplier;
   }
-
+  console.log('hi', laserCountBonus);
   drawCounts();
 }
 
-// NOTE AUTO UPGRADES
-// function autoUpgradeOne() {
-//   if (orbs >= ) {
-//     orbs -= 5;
-//     autoUpgrades.push(automaticUpgrades[0]);
-//     laserCount++;
-//     clickCountBonus += 20;
-//   }
-
-//   drawCounts();
-// }
-
-
+// STUB AUTO upgrade added to total Orbs
 function collectAutoUpgrades() {
-  autoUpgrades.forEach((laser) => {
-    orbs += laser.multiplier;
-  });
+  orbs += laserCountBonus;
   // console.log(autoUpgrades, orbs);
   drawCounts();
 }
 
-// SECTION TESTS
-
 function timer() {
-  let timerseconds = 3;
   let timerDOM = document.getElementById('timer');
-  timerseconds--;
-  if (timerseconds < 0) {
-    timerseconds = 3;
+  timerSeconds--;
+  if (timerSeconds < 0) {
+    timerSeconds = 3;
   }
-  timerDOM.innerText = timerseconds;
+  timerDOM.innerText = timerSeconds;
 }
 
 function click(event) {
@@ -232,7 +164,6 @@ function colorchange() {
   let orbElem = document.getElementById('atomOrb');
   let rNum = Math.floor(Math.random() * 360);
   orbElem.style.filter = 'hue-rotate(' + rNum + 'deg)';
- 
 }
 
 function addAlien() {
@@ -248,17 +179,39 @@ function addLaser() {
   laserMarquee.innerHTML += template;
 }
 
+
+
 function changeImage() {
-  if (orbs >= 100) {
-    let template = `<img id="atomOrb" onclick="" 
-  src="https://giphy.com/gifs/89a-art-black-and-white-animation-XYlK99u8oOGic" 
-  alt="Insulated" class="img-fluid rounded-circle heart">`;
-    document.getElementById('cookie').innerHTML = template;
+ 
+  switch (orbs) {
+    // TRY TO PUT IN A BOUNCE IN ANIMATION CHECK BALLOON POP
+    case 10:
+      atomOrbDOM.src = 'https://media1.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.gif?cid=ecf05e47k15dvss3xmpuj6gftxjj4i9peyuhmidcpvhldp4p&rid=giphy.gif&ct=g'
+      break;
+      case 15:
+        atomOrbDOM.src = 'https://media2.giphy.com/media/5Rg9bh6LyLKuY/giphy.gif?cid=ecf05e47snlxpgkpnyqzzetx78hx1ljx472ox5d2x2epjp12&rid=giphy.gif&ct=g'
+        break;
+      case 20:
+        // CHANGE THIS ONE
+        atomOrbDOM.src = 'https://media1.giphy.com/media/l1KVbbEBi4keD6jlu/giphy.gif?cid=ecf05e47murua58yw20e67n8axnunobbbro5giwymznom9xk&rid=giphy.gif&ct=g'
+        break;
+      case 25:
+        atomOrbDOM.src = 'https://media0.giphy.com/media/l41m5M6KnkGywFyXS/giphy.gif?cid=ecf05e479ue6rlb6iek04tiz66kb7w8i8i2xqipwxbbtsozp&rid=giphy.gif&ct=g'
+   break;
+      case 30:
+        atomOrbDOM.src = 'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp'
+   break;
+      case 35:
+        atomOrbDOM.src = 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp'
+   break;
+      case 40:
+        atomOrbDOM.src = 'https://media4.giphy.com/media/QVUgDYLg7ezR5mBtv0/giphy.gif?cid=ecf05e47adqrbr4mkib6tghaxyclcjaqpcvtwqk45dxu8qqi&rid=giphy.gif&ct=g'
+   break;
   }
 }
-drawCounts()
-setInterval(timer, 1000);
 setInterval(collectAutoUpgrades, 3000);
+setInterval(timer, 1000);
+drawCounts();
 
 // var x = 0;
 // $("#cookie").click(function(e) {

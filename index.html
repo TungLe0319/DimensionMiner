@@ -109,12 +109,12 @@
 
     <!-- UPGRADES -->
     <section class="container-fluid">
-      <div class="row justify-content-center ">
+      <div class="row pb-5 justify-content-center ">
         <!-- <div class="col-md-1 me-5">
           <img src="https://i.giphy.com/media/L2UHsn6f4Vmw4Dt8p3/giphy.webp" alt="" style="width: 10rem;">
         </div> -->
         <!-- SECTION CLICK UPGRADES -->
-        <div class="col-md-5 bg-dark text-light justify-content-center ">
+        <div class="col-md-6 bg-dark text-light justify-content-center pb-5">
           <div class="container-fluid">
             <div class="row py-1 mb-4">
               <div class="col-md-6">CLICK UPGRADES</div>
@@ -125,31 +125,35 @@
                 
               
                    <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
-                  <small>x20</small>
+                   <small>x</small>
+                   <!-- STUB PICKAXECOST -->
+                   <span id="pickaxe-cost" class="text-info"></span>
                 
                 
-           <span><small>pickaxe</small></span>
+           <span><small>pickaxe qt:</small></span>
            
-           <span id="pickaxe-count" class="text-danger">0</span>
+           <span id="pickaxe-count" class="text-danger">0</span><br>
            <!-- ---------------- -->
            <!-- MEGA PICK AXE -->
             
             <img  id="pickimg" onclick="upgrade('megapickaxe')" src="./resources/pickaxe.png" alt="" class="cursor-stuff megapickaxe mt-2 itemglow rounded-circle" style="width: 4rem;">
             
             <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
-            <small>x100</small>
-          
+            <small>x</small>
+            <!-- STUB megapickaxe-cost -->
+            <span id="megapickaxe-cost" class="text-info"></span>
           
      <span><small>Mega</small></span>
-            <span id='megapickaxe-count' class="text-danger">0</span>
+            <span id='megapickaxe-count' class="text-danger">0</span><br>
             <!-- ------------- -->
             <!-- ULTRA PICK -->
             
             <img  id="pickimg" onclick="upgrade('ultrapickaxe')" src="./resources/pickaxe.png" alt="" class="cursor-stuff ultramegapickaxe mt-2 itemglow rounded-circle" style="width: 4rem;">
             
             <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
-            <small>x500</small>
-          
+            <small>x</small>
+            <!-- --- STUB ultrapickaxe-cost -->
+            <span id="ultrapickaxe-cost" class="text-info"></span>
           
      <span><small>Ultra</small></span>
             <span id='ultraPickaxe-count' class="text-danger">0</span>
@@ -197,8 +201,8 @@
         </div>
 
         <!-- SECTION STATS -->
-        <div class="statstest col-md-5 text-light bg-warning justify-content-center"><div class="container-fluid">
-          <div class="row py-1 mb-4">
+        <div class="statstest col-md-6 text-light bg-warning justify-content-center"><div class="container-fluid">
+          <div class="row py-1 ">
             <div class="col-md-6">CLICK STATS</div>
             <div class="col-md-6">AUTOMATIC STATS</div>
             <div class="col-md-6 mt-1 ">
@@ -220,9 +224,7 @@
   </main>
   <footer></footer>
   
-  <template id="floating-text-template">
-    <!-- your existing code -->
-  </template>
+ 
   
   
   <!-- SECTION SCRIPTS -->
