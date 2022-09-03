@@ -1,10 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&family=Oswald&family=Roboto&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Audiowide&family=Fascinate+Inline&family=Mouse+Memoirs&family=Orbitron:wght@500&family=Poppins:wght@200&family=Roboto:ital,wght@1,300&family=Titan+One&display=swap');
 * {
   font-family: 'Audiowide', cursive;
 }
 
 
+.cb{
+  color: #00ff42;
+}
+.numberFont{
+  font-family: 'Fascinate Inline', cursive;
+}
+ 
 
 main{
   height: 100vh;
@@ -21,6 +27,13 @@ main{
   background-repeat: no-repeat;
   user-select: none;
   cursor: pointer;
+}
+
+.statbg{
+  background-image: url(https://i.giphy.com/media/ll1ja37fH7eldHnErq/giphy.webp);
+  background-position: center;
+ background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* .alienandlaser{
@@ -143,7 +156,7 @@ filter: hue-rotate(120deg);
   }
   .heart {
    
-    animation: animateHeart 1.2s infinite,shake 0.5s;
+    animation: animateHeart 1.2s infinite;
     filter: saturate(200%);
    
   }
@@ -160,4 +173,22 @@ filter: hue-rotate(120deg);
   }
 
   
+  @keyframes cf4FadeInOut {
+    0% {
+      opacity:1;
+    }
+    17% {
+      opacity:1;
+    }
+    25% {
+      opacity:0;
+    }
+    92% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+   }
+   
   
