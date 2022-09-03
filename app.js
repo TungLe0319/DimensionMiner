@@ -1,7 +1,8 @@
 let clickUpgrades = [
+  { name: 'startingPick', price: 0, quantity: 1, multiplier: 0},
   { name: 'pickaxe', price: 5, quantity: 0, multiplier: 1 },
   { name: 'megapickaxe', price: 100, quantity: 0, multiplier: 5 },
-  { name: 'ultrapickaxe', price: 1000, quantity: 0, multiplier: 20 },
+  { name: 'ultrapickaxe', price: 1000, quantity: 0, multiplier: 20},
 ];
 
 let automaticUpgrades = [
@@ -33,9 +34,8 @@ let autoUpgrades = [
 
 // GLOBAL VARIABLES]
 
-let orbs = 1000;
-
-
+let orbs = 0;
+let pickaxeTotal= 0
 let laserCountBonus = 0;
 
 let clickCountBonus = 0;
@@ -62,27 +62,22 @@ let ultraLaser = automaticUpgrades.find(
   (pickle) => pickle.name == 'ultralaser'
 );
 
-function returnSum(){
- const sumValues = upgrades.forEach(upgrade =>  upgrade.quantity*upgrade.multiplier) 
-  // const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
-  console.log('hi',sumValues);
-}
-
 function mine() {
   // TODO WHAT I WANT IS THE MULTIPLYER TIMES THE QUANTITY
   
-  
+
+orbs ++
   addLaser();
   addAlien();
   colorchange();
-
+drawTotalClick()
   drawCounts();
 }
 
-// TODO DOM need to = quantity
+
 function drawCounts() {
   clickCountBonusDOM.innerText = clickCountBonus;
-  orbDOM.innerText = orbs;
+ 
   pickaxeCountDOM.innerText = pickaxe.quantity;
   megaPickaxeCountDOM.innerText = megaPickAxe.quantity;
   ultraPickaxeCountDOM.innerText = ultraPickAxe.quantity;
@@ -92,28 +87,48 @@ function drawCounts() {
   laserCountBonusDOM.innerText = laserCountBonus;
 }
 
-function drawItemsCounts() {}
-// TODO need picks.quantity to = their pickaxeCount =0
+function drawTotalClick(){
+ 
+  clickUpgrades.forEach(clicker =>{
+    orbs += clicker.multiplier * clicker.quantity
+  })
+  console.log('click bonus',clickCountBonus);
+  orbDOM.innerText==orbs
+}
+
 /* on the specific icon onclick event takes in the name in HTML then checks if it matches data in JS array.
  if true then goes down last matching the if's orbs >= the selected Item's price in the array if true then allows the upgrade
  TRYING OUT replaceting the clickcount bonus += 5 or 20 with clickCountBonus += picks.multipler 
  TODO would like to add where it doesn't constantly push a new item into the array*/
 function upgrade(name) {
   let picks = clickUpgrades.find((upgrade) => upgrade.name == name);
-  let items = upgrades.find((item) => item.name == name);
+  
+ if (orbs >= picks.price) {
+  orbs -= picks.price
+  picks.quantity++
+  
+ }
 
-  if (!items) {
-    upgrades.push(picks);
-  }
-  if (orbs >= picks.price) {
-    orbs -= picks.price;
-updatedOrbCollected++
-    picks.quantity++;
-    // 
-    //  picks.price += 10
-    console.log('quantity times mulitplier', picks.quantity + picks.multiplier);
-    console.log('hi');
-  }
+ 
+  
+  // if (orbs >= pickaxe.price) {
+  //   orbs -= pickaxe.price;
+  //  pickaxe.quantity++
+    
+  //   clickCountBonus+= 1
+  // }
+  // if (orbs >= megaPickAxe.price) {
+  //   orbs -= megaPickAxe.price;
+  //  megaPickAxe.quantity++
+   
+  //   clickCountBonus+= 5
+  // }
+  // if (orbs >= ultraPickAxe.price) {
+  //   orbs -= ultraPickAxe.price;
+  //  ultraPickAxe.quantity++
+   
+  //   clickCountBonus+= 20
+  // }
 
   drawCounts();
 }
@@ -182,7 +197,7 @@ function autoUpgradesLaser(name) {
 //   drawCounts();
 // }
 
-// TODO laser count DOM to change, interval making it change itself and not accurrate
+
 function collectAutoUpgrades() {
   autoUpgrades.forEach((laser) => {
     orbs += laser.multiplier;
@@ -193,8 +208,8 @@ function collectAutoUpgrades() {
 
 // SECTION TESTS
 
-let timerseconds = 3;
 function timer() {
+  let timerseconds = 3;
   let timerDOM = document.getElementById('timer');
   timerseconds--;
   if (timerseconds < 0) {
@@ -217,7 +232,7 @@ function colorchange() {
   let orbElem = document.getElementById('atomOrb');
   let rNum = Math.floor(Math.random() * 360);
   orbElem.style.filter = 'hue-rotate(' + rNum + 'deg)';
-  console.log(rNum);
+ 
 }
 
 function addAlien() {
@@ -241,7 +256,7 @@ function changeImage() {
     document.getElementById('cookie').innerHTML = template;
   }
 }
-
+drawCounts()
 setInterval(timer, 1000);
 setInterval(collectAutoUpgrades, 3000);
 

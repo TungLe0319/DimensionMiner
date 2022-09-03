@@ -1,15 +1,3 @@
-when Buy
-it check's the 'name' on the html and compares it to js array
-if name === 'the name here'
-then it compares recources > item.name.price
-
-function addAutoUpgrade(){
-  const auto = upgrades.find(auto => auto.label == 'auto')
-  if(recources > auto1){
-
-  }
-}
-
-buyUpgrades(){
-all buttons have the same function name
-}
+For right now the problems i need to solve are
+I don't want to have to push everything into the array but i will if i have to
+in the buyUpgrade I can place everytime they click it it adds another object into the array works. upgrades.push(upgrade)
