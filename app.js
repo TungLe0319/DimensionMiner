@@ -33,7 +33,7 @@ let autoUpgrades = [
 
 // GLOBAL VARIABLES]
 
-let orbs = 0;
+let orbs = 1000;
 
 
 let laserCountBonus = 0;
@@ -53,19 +53,29 @@ let laserCountBonusDOM = document.getElementById('autoClickCount-bonus');
 // let pickaxe = clickUpgrades.find((upgrade) => upgrade.name == 'pickaxe');
 let pickaxe = clickUpgrades.find((pickle) => pickle.name == 'pickaxe');
 let megaPickAxe = clickUpgrades.find((pickle) => pickle.name == 'megapickaxe');
-let ultraPickAxe = clickUpgrades.find((pickle) => pickle.name == 'ultrapickaxe');
-let laser= automaticUpgrades.find(pickle => pickle.name == 'laser')
-let megaLaser= automaticUpgrades.find(pickle => pickle.name == 'megalaser')
-let ultraLaser= automaticUpgrades.find(pickle => pickle.name == 'ultralaser')
+let ultraPickAxe = clickUpgrades.find(
+  (pickle) => pickle.name == 'ultrapickaxe'
+);
+let laser = automaticUpgrades.find((pickle) => pickle.name == 'laser');
+let megaLaser = automaticUpgrades.find((pickle) => pickle.name == 'megalaser');
+let ultraLaser = automaticUpgrades.find(
+  (pickle) => pickle.name == 'ultralaser'
+);
+
+function returnSum(){
+ const sumValues = upgrades.forEach(upgrade =>  upgrade.quantity*upgrade.multiplier) 
+  // const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+  console.log('hi',sumValues);
+}
+
 function mine() {
+  // TODO WHAT I WANT IS THE MULTIPLYER TIMES THE QUANTITY
   
-  upgrades.forEach((upgrade) => {
-    orbs += upgrade.multiplier
-  });
+  
   addLaser();
   addAlien();
   colorchange();
-  console.log(upgrades);
+
   drawCounts();
 }
 
@@ -74,11 +84,11 @@ function drawCounts() {
   clickCountBonusDOM.innerText = clickCountBonus;
   orbDOM.innerText = orbs;
   pickaxeCountDOM.innerText = pickaxe.quantity;
-  megaPickaxeCountDOM.innerText =megaPickAxe.quantity
-  ultraPickaxeCountDOM.innerText =ultraPickAxe.quantity
-  laserCountDOM.innerText =laser.quantity
-  megaLaserCountDOM.innerText =megaLaser.quantity
-  ultraLaserCountDOM.innerText =ultraLaser.quantity
+  megaPickaxeCountDOM.innerText = megaPickAxe.quantity;
+  ultraPickaxeCountDOM.innerText = ultraPickAxe.quantity;
+  laserCountDOM.innerText = laser.quantity;
+  megaLaserCountDOM.innerText = megaLaser.quantity;
+  ultraLaserCountDOM.innerText = ultraLaser.quantity;
   laserCountBonusDOM.innerText = laserCountBonus;
 }
 
@@ -90,20 +100,19 @@ function drawItemsCounts() {}
  TODO would like to add where it doesn't constantly push a new item into the array*/
 function upgrade(name) {
   let picks = clickUpgrades.find((upgrade) => upgrade.name == name);
-  let items = upgrades.find(item => item.name == name)
+  let items = upgrades.find((item) => item.name == name);
+
   if (!items) {
-     upgrades.push(picks);
+    upgrades.push(picks);
   }
   if (orbs >= picks.price) {
-   
     orbs -= picks.price;
-    
-   
+updatedOrbCollected++
     picks.quantity++;
-    // TODO CHANGE PRICE ON PURCHASE
-  //  picks.price += 10
-    clickCountBonus += picks.multiplier;
-    
+    // 
+    //  picks.price += 10
+    console.log('quantity times mulitplier', picks.quantity + picks.multiplier);
+    console.log('hi');
   }
 
   drawCounts();
@@ -222,6 +231,15 @@ function addLaser() {
   let laserMarquee = document.getElementById('lasermarquee');
   let template = ` <img src="https://media2.giphy.com/media/1rOy1l3mulySaqilto/giphy.gif?cid=ecf05e47oc9d0htfhowppmrlwdqgkhipbq2wuokomsbcvi6f&rid=giphy.gif&ct=s" alt="" srcset="" style="width: 2rem;">`;
   laserMarquee.innerHTML += template;
+}
+
+function changeImage() {
+  if (orbs >= 100) {
+    let template = `<img id="atomOrb" onclick="" 
+  src="https://giphy.com/gifs/89a-art-black-and-white-animation-XYlK99u8oOGic" 
+  alt="Insulated" class="img-fluid rounded-circle heart">`;
+    document.getElementById('cookie').innerHTML = template;
+  }
 }
 
 setInterval(timer, 1000);
