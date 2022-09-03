@@ -10,36 +10,8 @@ let automaticUpgrades = [
   { name: 'ultralaser', price: 50, quantity: 0, multiplier: 60 },
 ];
 
-
-
-
-// GLOBAL VARIABLES
-let orbs = 0;
-let pickaxeCount = 0;
-let megaPickaxeCount = 0
-let ultraPickaxeCount = 0
-let laserCount = 0
-let laserCountBonus = 0
-let megaLaserCount = 0
-let ultraLaserCount = 0
-let clickCountBonus = 0
-// ----------------
-let orbDOM = document.getElementById('orb-amount');
-let megaPickaxeCountDOM= document.getElementById('megapickaxe-count')
-let ultraPickaxeCountDOM= document.getElementById('ultraPickaxe-count')
-let pickaxeCountDOM = document.getElementById('pickaxe-count');
-let laserCountDOM = document.getElementById('laser-count')
-let megaLaserCountDOM = document.getElementById('megalaser-count')
-let ultraLaserCountDOM = document.getElementById('ultralaser-count')
-let clickCountBonusDOM = document.getElementById('clickCount-bonus')
-let laserCountBonusDOM=document.getElementById('autoClickCount-bonus')
-// -----------------------------
-let pickaxe = clickUpgrades.find((upgrade) => upgrade.name == 'pickaxe');
-let megaPickaxe = clickUpgrades.find(
-  (upgrade) => upgrade.name == 'megapickaxe'
-);
 // upgrade ARRAYS
-const upgrades = [
+let upgrades = [
   {
     name: 'startingClick',
     price: 0,
@@ -48,69 +20,94 @@ const upgrades = [
   },
 ];
 
-const autoUpgrades = [
+let autoUpgrades = [
   {
     name: ' starting auto',
     price: 0,
     quantity: 0,
-    multiplier : 0
-  }
-]
+    multiplier: 0,
+  },
+];
+
+// let pickle = upgrades.find( pickle => pickle.name == 'pickaxe')
+
+// GLOBAL VARIABLES]
+
+let orbs = 0;
+
+
+let laserCountBonus = 0;
+
+let clickCountBonus = 0;
+// ----------------
+let orbDOM = document.getElementById('orb-amount');
+let megaPickaxeCountDOM = document.getElementById('megapickaxe-count');
+let ultraPickaxeCountDOM = document.getElementById('ultraPickaxe-count');
+let pickaxeCountDOM = document.getElementById('pickaxe-count');
+let laserCountDOM = document.getElementById('laser-count');
+let megaLaserCountDOM = document.getElementById('megalaser-count');
+let ultraLaserCountDOM = document.getElementById('ultralaser-count');
+let clickCountBonusDOM = document.getElementById('clickCount-bonus');
+let laserCountBonusDOM = document.getElementById('autoClickCount-bonus');
+// -----------------------------
+// let pickaxe = clickUpgrades.find((upgrade) => upgrade.name == 'pickaxe');
+let pickaxe = clickUpgrades.find((pickle) => pickle.name == 'pickaxe');
+let megaPickAxe = clickUpgrades.find((pickle) => pickle.name == 'megapickaxe');
+let ultraPickAxe = clickUpgrades.find((pickle) => pickle.name == 'ultrapickaxe');
+let laser= automaticUpgrades.find(pickle => pickle.name == 'laser')
+let megaLaser= automaticUpgrades.find(pickle => pickle.name == 'megalaser')
+let ultraLaser= automaticUpgrades.find(pickle => pickle.name == 'ultralaser')
 function mine() {
-  upgrades.forEach(upgrade =>{
-   orbs += upgrade.multiplier
-  })
-  addLaser()
- addAlien()
-colorchange()
-  console.log(orbs);
+  
+  upgrades.forEach((upgrade) => {
+    orbs += upgrade.multiplier
+  });
+  addLaser();
+  addAlien();
+  colorchange();
+  console.log(upgrades);
   drawCounts();
 }
 
-
-
+// TODO DOM need to = quantity
 function drawCounts() {
-  clickCountBonusDOM.innerText=clickCountBonus
+  clickCountBonusDOM.innerText = clickCountBonus;
   orbDOM.innerText = orbs;
-  pickaxeCountDOM.innerText = pickaxeCount
-  megaPickaxeCountDOM.innerText = megaPickaxeCount
-  laserCountDOM.innerText = laserCount
-  megaLaserCountDOM.innerText = megaLaserCount
-  ultraPickaxeCountDOM.innerText = ultraPickaxeCount
-  ultraLaserCountDOM.innerText=ultraLaserCount
-  laserCountBonusDOM.innerText=laserCountBonus
+  pickaxeCountDOM.innerText = pickaxe.quantity;
+  megaPickaxeCountDOM.innerText =megaPickAxe.quantity
+  ultraPickaxeCountDOM.innerText =ultraPickAxe.quantity
+  laserCountDOM.innerText =laser.quantity
+  megaLaserCountDOM.innerText =megaLaser.quantity
+  ultraLaserCountDOM.innerText =ultraLaser.quantity
+  laserCountBonusDOM.innerText = laserCountBonus;
 }
 
-
+function drawItemsCounts() {}
+// TODO need picks.quantity to = their pickaxeCount =0
 /* on the specific icon onclick event takes in the name in HTML then checks if it matches data in JS array.
  if true then goes down last matching the if's orbs >= the selected Item's price in the array if true then allows the upgrade
- TRYING OUT replaceting the clickcount bonus += 5 or 20 with clickCountBonus += picks.multipler */
-function upgrade(name){
- let picks =clickUpgrades.find(upgrade => upgrade.name == name)
- if (orbs >= picks.price) {
-  orbs -= picks.price;
-  upgrades.push(picks);
-  picks.quantity ++
-  clickCountBonus+= picks.multiplier
-}
-// else if (orbs >= picks.price) {
+ TRYING OUT replaceting the clickcount bonus += 5 or 20 with clickCountBonus += picks.multipler 
+ TODO would like to add where it doesn't constantly push a new item into the array*/
+function upgrade(name) {
+  let picks = clickUpgrades.find((upgrade) => upgrade.name == name);
+  let items = upgrades.find(item => item.name == name)
+  if (!items) {
+     upgrades.push(picks);
+  }
+  if (orbs >= picks.price) {
    
-//   orbs -= 100;
-//   upgrades.push(picks);
-//   megaPickaxeCount++;
-//   clickCountBonus+= picks.multiplier
-// }else  if (orbs >= picks.price) {
+    orbs -= picks.price;
     
-//   orbs -= 10;
-//   upgrades.push(picks);
-//   ultraPickaxeCount++;
-//   clickCountBonus+=picks.multiplier
-// }
-console.log(picks.name);
-drawCounts();
+   
+    picks.quantity++;
+    // TODO CHANGE PRICE ON PURCHASE
+  //  picks.price += 10
+    clickCountBonus += picks.multiplier;
+    
+  }
 
+  drawCounts();
 }
-
 
 // SECTION CLICK UPGRADES
 // function upgradeOne() {
@@ -122,11 +119,11 @@ drawCounts();
 //   }
 //   console.log(upgrades);
 //   drawCounts();
-  
+
 // }
 // function upgradeTwo() {
 //   if (orbs >= 100) {
-   
+
 //     orbs -= 100;
 //     upgrades.push(clickUpgrades[1]);
 //     megaPickaxeCount++;
@@ -136,13 +133,11 @@ drawCounts();
 //   drawCounts();
 // }
 
-
-
 // change back to 500 later, using 10 for testing
 // change -= back to 500
 // function upgradeThree() {
 //   if (orbs >= 10) {
-    
+
 //     orbs -= 10;
 //     upgrades.push(clickUpgrades[2]);
 //     ultraPickaxeCount++;
@@ -150,94 +145,87 @@ drawCounts();
 //   }
 //   console.log(upgrades);
 //   drawCounts();
-  
+
 // }
 
-
- function autoUpgradesLaser(name){
-  let laser= automaticUpgrades.find(laser => laser.name == name)
+function autoUpgradesLaser(name) {
+  let laser = automaticUpgrades.find((laser) => laser.name == name);
   if (orbs >= laser.price) {
-    orbs -= laser.price
-    autoUpgrades.push(laser)
-    laserCountBonus+= laser.multiplier
-    laserCount += laser.multiplier
-  } 
-  console.log(laser.name);
-  drawCounts()
- }
+    orbs -= laser.price;
+    autoUpgrades.push(laser);
+    laser.quantity++;
+
+    laserCountBonus += laser.multiplier;
+  }
+
+  drawCounts();
+}
 
 // NOTE AUTO UPGRADES
-function autoUpgradeOne(){
-  if (orbs >= 5) {
-    orbs -= 5
-    autoUpgrades.push(automaticUpgrades[0])
-    laserCount ++
-    clickCountBonus+= 20
-  }
-  console.log(autoUpgrades);
-  drawCounts()
-}
+// function autoUpgradeOne() {
+//   if (orbs >= ) {
+//     orbs -= 5;
+//     autoUpgrades.push(automaticUpgrades[0]);
+//     laserCount++;
+//     clickCountBonus += 20;
+//   }
+
+//   drawCounts();
+// }
 
 // TODO laser count DOM to change, interval making it change itself and not accurrate
-function collectAutoUpgrades(){
-  autoUpgrades.forEach(laser => {
-    orbs += laser.multiplier
-   
-  })
+function collectAutoUpgrades() {
+  autoUpgrades.forEach((laser) => {
+    orbs += laser.multiplier;
+  });
   // console.log(autoUpgrades, orbs);
- drawCounts()
+  drawCounts();
 }
-
-
-
-
-
-
 
 // SECTION TESTS
 
-let timerseconds = 3
-function timer(){
-  let timerDOM = document.getElementById('timer')
-  timerseconds--
-  if (timerseconds <0) {
-  timerseconds=3
-  
-}
-timerDOM.innerText=timerseconds
-
+let timerseconds = 3;
+function timer() {
+  let timerDOM = document.getElementById('timer');
+  timerseconds--;
+  if (timerseconds < 0) {
+    timerseconds = 3;
+  }
+  timerDOM.innerText = timerseconds;
 }
 
 function click(event) {
-  const template = document.getElementByID('#floating-text-template').content.cloneNode(true);
-  const element = template.querySelector('cookie') //replace class with yours
-  element.style.left = `${event.clientX}px`
-  element.style.top = `${event.clientY}px`
+  const template = document
+    .getElementByID('#floating-text-template')
+    .content.cloneNode(true);
+  const element = template.querySelector('cookie'); //replace class with yours
+  element.style.left = `${event.clientX}px`;
+  element.style.top = `${event.clientY}px`;
   document.appendChild(element);
 }
 
-function colorchange(){
-  let orbElem =document.getElementById('atomOrb')
-  let rNum = Math.floor(Math.random() *360)
-orbElem.style.filter ='hue-rotate('+rNum +'deg)'
-console.log(rNum);
+function colorchange() {
+  let orbElem = document.getElementById('atomOrb');
+  let rNum = Math.floor(Math.random() * 360);
+  orbElem.style.filter = 'hue-rotate(' + rNum + 'deg)';
+  console.log(rNum);
 }
 
-function addAlien(){
-  let alienMarquee = document.getElementById("alienmarquee")
- 
-   let template = `<img src="./resources/Alien.png" alt="" srcset="" style="width: 2rem;">`
-  
-  alienMarquee.innerHTML += template
+function addAlien() {
+  let alienMarquee = document.getElementById('alienmarquee');
+
+  let template = `<img src="./resources/Alien.png" alt="" srcset="" style="width: 2rem;">`;
+
+  alienMarquee.innerHTML += template;
 }
-function addLaser(){
-  let laserMarquee = document.getElementById('lasermarquee')
-  let template = ` <img src="https://media2.giphy.com/media/1rOy1l3mulySaqilto/giphy.gif?cid=ecf05e47oc9d0htfhowppmrlwdqgkhipbq2wuokomsbcvi6f&rid=giphy.gif&ct=s" alt="" srcset="" style="width: 2rem;">`
-laserMarquee.innerHTML += template
+function addLaser() {
+  let laserMarquee = document.getElementById('lasermarquee');
+  let template = ` <img src="https://media2.giphy.com/media/1rOy1l3mulySaqilto/giphy.gif?cid=ecf05e47oc9d0htfhowppmrlwdqgkhipbq2wuokomsbcvi6f&rid=giphy.gif&ct=s" alt="" srcset="" style="width: 2rem;">`;
+  laserMarquee.innerHTML += template;
 }
 
-setInterval(timer, 1000)
-setInterval( collectAutoUpgrades, 3000)
+setInterval(timer, 1000);
+setInterval(collectAutoUpgrades, 3000);
 
 // var x = 0;
 // $("#cookie").click(function(e) {
@@ -253,7 +241,6 @@ setInterval( collectAutoUpgrades, 3000)
 //   $("#x" + x).css("animation", "GoUp 2s forwards linear");
 //   $("#x" + x).show();
 // });
-
 
 // function clickEffect(e) {
 //   var d = document.createElement('div');

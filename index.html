@@ -90,16 +90,17 @@
     <section class="container-fluid justify-content-center menubar">
       <div class="row justify-content-center">
         <!-- STUB clickcount-bonus -->
-        <div class="col-md-3 bg-info d-flex ">
+        <div class="col-md-3 bg-info d-flex border border-light rounded-top ">
           <div><small>Click Bonus Applied:</small></div><span id="clickCount-bonus" class=""></span></div>
-        <div class="col-md-2 bg-light  rounded-top d-flex   justify-content-evenly fs-2 mx-1 ">
+        <div class="col-md-2 bg-dark text-light border border-light rounded-top d-flex   justify-content-evenly fs-2 mx-1 ">
           <span><img src="./resources/Orbs.png" alt="" style="width: 3rem;">'s:</span>
 <!-- <img src="https://c.tenor.com/adJYEUbjbSgAAAAd/pondering-my-orb-monkey-swimming.gif" alt="" style="width:10rem;height:10rem"> -->
 <span id="orb-amount" class="text-danger "><p>0</p></span>
         </div>
-        <div class="col-md-3 bg-danger">
+        <div class="col-md-3 bg-danger border border-light rounded-top">
          <!-- autoClickCount-Bonus -->
-         <div><img src="./resources/hourglass.png" alt="" class="mt-2" style="width: 3rem;"> <span id="timer" class="text-warning">3</span></div>
+         <!-- IMAGE hourclass -->
+         <div><img src="./resources/hourglass.png" alt="" class="mt-2" style="width: 2rem;"> <span id="timer" class="text-warning">3</span></div>
         <span>AutomaticBonus:</span>
          <span id="autoClickCount-bonus">0</span>
         </div>
@@ -128,6 +129,7 @@
                 
                 
            <span><small>pickaxe</small></span>
+           
            <span id="pickaxe-count" class="text-danger">0</span>
            <!-- ---------------- -->
            <!-- MEGA PICK AXE -->
@@ -142,6 +144,7 @@
             <span id='megapickaxe-count' class="text-danger">0</span>
             <!-- ------------- -->
             <!-- ULTRA PICK -->
+            
             <img  id="pickimg" onclick="upgrade('ultrapickaxe')" src="./resources/pickaxe.png" alt="" class="cursor-stuff ultramegapickaxe mt-2 itemglow rounded-circle" style="width: 4rem;">
             
             <img src="./resources/Orbs.png" alt="" class=" " style="width: 2rem;">
