@@ -72,8 +72,14 @@ filter: hue-rotate(120deg);
   box-shadow:0 0 10px rgb(187, 245, 255);
 }
 
+.rotate{
+  transform: rotate(90deg);
 
-
+}
+.shadow-filter{
+  -webkit-filter: drop-shadow(12px 12px 7px rgba(255, 0, 0, 0.5));
+  filter: drop-shadow( 1px 2px 2px rgba(117, 255, 239, 0.633));
+}
 /* .statstest{
   background-image: url(https://media3.giphy.com/media/qDqBVEMsY39PIU3DCY/giphy.gif?cid=ecf05e47e5gkt7cmiv8ew8aujoqbjf76ws1ouy6l4bqyrikv&rid=giphy.gif&ct=s);
 } */
@@ -157,13 +163,16 @@ filter: hue-rotate(120deg);
   .heart {
    
     animation: animateHeart 1.2s infinite;
-    filter: saturate(200%);
+  
    
   }
 
 
-  
-  .heart:hover{
+  .orb-glow{
+     filter: saturate(200%); 
+  }
+
+  .orb-glow:hover{
 
     transition: ease-in-out .3s;
     box-shadow:0 0 50px rgb(227, 255, 15);

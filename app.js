@@ -51,15 +51,19 @@ let megaLaser = automaticUpgrades.find((pickle) => pickle.name == 'megalaser');
 let ultraLaser = automaticUpgrades.find((pickle) => pickle.name == 'ultralaser');
 // STUB FOR TIMER
 let timerSeconds = 3;
+const audio = new Audio()
+audio.src = "./resources/ClickSound.wav"
 
 function mine() {
   orbs += clickCountBonus;
-  addLaser();
-  addAlien();
+audio.play()
+  
+  // addLaser();
+  // addAlien();
   colorchange();
   drawCounts();
   changeImage();
-  console.log(clickUpgrades);
+ 
 }
 
 function drawCounts() {
