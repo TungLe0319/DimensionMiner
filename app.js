@@ -3,6 +3,7 @@ let clickUpgrades = [
   { name: 'pickaxe', price: 10, quantity: 0, multiplier: 5 },
   { name: 'megapickaxe', price: 100, quantity: 0, multiplier: 5 },
   { name: 'ultrapickaxe', price: 1000, quantity: 0, multiplier: 20 },
+  { name: 'makeADeal', price: 10, quantity: 0, multiplier: 1000 },
 ];
 
 let automaticUpgrades = [
@@ -130,7 +131,14 @@ function autoUpgradesLaser(name) {
 function specialGun(name){
 let specialGun = automaticUpgrades.find(gun => gun.name == name)
 let specialGunBadge = document.getElementById('specialGunBadge')
+let greyOut = document.getElementById('special1')
+if (specialGun.quantity >=1) {
+  greyOut.className += 'grey-out'
+  specialGun.price= 0
+  specialGun.multiplier=0
+}
 if (orbs > specialGun.price) {
+
   orbs -= specialGun.price
   specialGun.quantity++
   laserCountBonus += specialGun.multiplier
@@ -140,20 +148,55 @@ drawCounts()
 }
 // ----------------------
 // -----------------------------
+// TODO FIX ONLY 2 aliens coming out
 function callForHelp(name){
 let callForHelp= automaticUpgrades.find(help => help.name == name)
-// let callForHelpBadge = document.getElementById('callForHelpBadge')
+let callForHelpBadge = document.getElementById('callForHelpBadge')
+let greyOut = document.getElementById('special2')
+if (callForHelp.quantity >=5) {
+  greyOut.className += 'grey-out'
+  callForHelp.multiplier=0
+  callForHelp.price=0
+}
 if (orbs > callForHelp.price) {
   orbs -= callForHelp.price
   callForHelp.quantity++
   laserCountBonus += callForHelp.multiplier
-// callForHelpBadge.className -= 'visually-hidden'
+  callForHelpBadge.className -= 'visually-hidden'
+ 
 }
 addAlien()
 addLaser()
+
 drawCounts()
 }
 // ----------------------
+function makeADeal(name){
+  let makeADeal= clickUpgrades.find(deal=> deal.name == name)
+  let makeADealBadge = document.getElementById('makeADealBadge')
+  let greyOut = document.getElementById('special3')
+  if (makeADeal.quantity >=1) {
+    greyOut.className += 'grey-out'
+    makeADeal.multiplier = 0
+    makeADeal.price= 0
+  }
+  if (orbs > makeADeal.price) {
+    orbs -= makeADeal.price
+    makeADeal.quantity++
+    clickCountBonus+= makeADeal.multiplier
+    makeADealBadge.className -= 'visually-hidden'
+  
+  
+  }
+  
+  drawCounts()
+  }
+
+
+
+
+// -------------------------------------------------------------
+
 function pickMultiplier(){
   
 }

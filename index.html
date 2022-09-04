@@ -153,6 +153,26 @@
      data-bs-toggle="tooltip" data-bs-placement="bottom"
      data-bs-title="Badge: Can't believe you actually got this OP Gun..."/>
   </span>
+  <!-- --------------------------------------- -->
+  <span
+  id="callForHelpBadge" class="visually-hidden"><img
+   src="./resources/Alien1.png"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge:Befriended 5 Aliens"/>
+</span>
+  <!-- ------------------------------------------- -->
+  <span
+  id="makeADealBadge" class="visually-hidden"><img
+   src="https://media1.giphy.com/media/GE5LUTVEdH5LrvIppa/giphy.gif"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge: Traded Part Of Your Soul"/>
+</span>
+  <!-- --------------------------------------------------------- -->
+
             </div>
           </div>
          </div>
@@ -553,9 +573,12 @@
                 </div>
                 <!-- --------------------- -->
                 <!-- SECTION SPECIAL GUN -->
-                <div class="my-1 rounded bg-dark d-flex justify-content-evenly"><span class="ms-2 me-5">Broken Gun</span><span class="me-5">Call For Help</span>
-                <span>Make A Deal</span> </div>
-                <div class="col-md-3 mt-1 rounded pb-1 ms-4 gunbg d-flex justify-content-center border border-5 border-dark">
+                <div class="my-1 rounded bg-dark d-flex ">
+                  <small class="  me-5">Broken Gun <small class="text-danger">1Max</small></small>
+                  <small class="me-4">Call For Help <small class="text-danger">5Max</small></small>
+                <small class="">Make A Deal <small class="text-danger">1Max</small></small>
+               </div>
+                <div id="special1" class="col-md-3 mt-1 rounded pb-1 ms-2 me-1 gunbg d-flex justify-content-center border border-5 border-dark">
                   <div class="d-flex justify-content-center">
                     <img 
                     onclick="specialGun('specialGun')"
@@ -564,7 +587,7 @@
                   
                 </div>
                 <!-- ---------SECTION CALL FOR HELP------- -->
-                <div class="col-md-3 mt-1 mx-5 rounded pb-1 alienhelp  d-flex justify-content-center  border border-5 border-dark">
+                <div id="special2" class="col-md-3 mt-1 me-5 ms-5 rounded pb-1 alienhelp  d-flex justify-content-center  border border-5 border-dark">
                   <div class="d-flex justify-content-center">
                     <img 
                     onclick="callForHelp('callForHelp')"
@@ -575,7 +598,7 @@
               
                 <!-- --------SECTION MAKE A DEAL----------------- -->
 
-                <div class="col-md-3 mt-1 mx-1 rounded pb-1 makeadeal  d-flex justify-content-center  border border-5 border-dark">
+                <div id="special3" class="col-md-3 mt-1 mx-1 rounded pb-1 makeadeal   d-flex justify-content-center  border border-5 border-dark">
                   <div class="d-flex justify-content-center">
                     <img 
                     onclick="makeADeal('makeADeal')"
@@ -585,6 +608,13 @@
                 </div>
 
                 <!-- ----------------------------------------- -->
+                <div class="my-1 rounded bg-dark d-flex justify-content-around ">
+                  <small class="  me-5"> <small class="cb">+1000/3s</small></small>
+                  <small class="mx-1"><small class="cb">+500/3s</small></small>
+                <small class="ms-5"><small class="cb">+1000<i class="mdi mdi-cursor-default-click"></i
+                  ></small></small>
+               </div>
+                <!-- ---------------------------------------- -->
               </div>
             </div>
           </div>
