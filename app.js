@@ -1,13 +1,14 @@
+
 let clickUpgrades = [
 
   { name: 'pickaxe', price: 10, quantity: 0, multiplier: 5 },
-  { name: 'megapickaxe', price: 100, quantity: 0, multiplier: 5 },
+  { name: 'megapickaxe', price: 10, quantity: 0, multiplier: 5 },
   { name: 'ultrapickaxe', price: 1000, quantity: 0, multiplier: 20 },
   { name: 'makeADeal', price: 10, quantity: 0, multiplier: 1000 },
 ];
 
 let automaticUpgrades = [
-  { name: 'laser', price: 250, quantity: 0, multiplier: 25 },
+  { name: 'laser', price: 1, quantity: 0, multiplier: 25 },
   { name: 'megalaser', price: 500, quantity: 0, multiplier: 75 },
   { name: 'ultralaser', price: 1000, quantity: 0, multiplier: 100 },
   { name: 'specialGun', price: 10, quantity: 0, multiplier: 1000 },
@@ -20,27 +21,35 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 // GLOBAL VARIABLES]
 // TOTAL RESOURCES
+let totalOrbsOverTime=0
 let orbs = 0;
 let laserCountBonus = 0;
 let clickCountBonus = 1;
 // --------------------------
-let pickAxeMultiplier = 0
+
 // ----------------
 let orbDOM = document.getElementById('orb-amount');
+let totalOrbsDOM = document.getElementById('totalOrb-amount');
 let atomOrbDOM = document.getElementById('atomOrb');
 let clickCountBonusDOM = document.getElementById('clickCount-bonus');
 let laserCountBonusDOM = document.getElementById('autoClickCount-bonus');
 // -----------------------------------
+
 let pickaxeCountDOM = document.getElementById('pickaxe-count');
 let pickaxeCostDOM = document.getElementById('pickaxe-cost');
+let pickAxeMultiplierDOM = document.getElementById('pickAxeMultiplier')
 let megaPickaxeCountDOM = document.getElementById('megapickaxe-count');
 let MegaPickAxeCostDOM = document.getElementById('megapickaxe-cost');
+let megaPickMultiplierDOM = document.getElementById('megaPickAxe-Multiplier')
 let ultraPickaxeCountDOM = document.getElementById('ultraPickaxe-count');
 let ultraPickAxeCostDOM = document.getElementById('ultrapickaxe-cost');
-let megaPickMultiplierDOM = document.getElementById('megaPick-Multiplier')
+let ultraPickAxeMultiplierDOM = document.getElementById('ultraPickAxe-Multiplier');
 // -----------------------------------------------------
 let laserCountDOM = document.getElementById('laser-count');
 let laserCostDOM = document.getElementById('laser-cost')
+let laserMultiplierDOM = document.getElementById('laser-Multiplier')
+let megaLaserMultiplierDOM = document.getElementById('megaLaser-Multiplier')
+let ultraLaserMultiplierDOM = document.getElementById('ultraLaser-Multiplier')
 let megaLaserCountDOM = document.getElementById('megalaser-count');
 let megaLaserCostDOM = document.getElementById('megalaser-cost')
 let ultraLaserCountDOM = document.getElementById('ultralaser-count');
@@ -55,24 +64,76 @@ let megaLaser = automaticUpgrades.find((pickle) => pickle.name == 'megalaser');
 let ultraLaser = automaticUpgrades.find((pickle) => pickle.name == 'ultralaser');
 // ----------------------------------------------------------------
 let callForHelpz = automaticUpgrades.find(bananaWord => bananaWord.name == 'callForHelp')
+
 // let specialGunz = automaticUpgrades.find(pickle => pickle.name == 'specialGun')
 // STUB FOR TIMER
 let timerSeconds = 3;
 const audio = new Audio()
 audio.src = "./resources/ClickSound.wav"
 
+
+
+
+
+
+
+
+loadProfile()
+
+
+
+
 function mine() {
   orbs += clickCountBonus;
+  totalOrbsOverTime+= clickCountBonus
 audio.play()
   
   // addLaser();
   // addAlien();
   colorchange();
+  
   drawCounts();
   changeImage();
 
+}
 
- 
+
+function save(){
+  window.localStorage.setItem('Orbs', orbs)
+  window.localStorage.setItem('totalOrbsOverTime', totalOrbsOverTime)
+  window.localStorage.setItem('ClickUpgrades', JSON.stringify(clickUpgrades))
+  window.localStorage.setItem('AutomaticUpgrades', JSON.stringify(automaticUpgrades))
+  window.localStorage.setItem('ClickCountBonus', clickCountBonus)
+  window.localStorage.setItem('LaserCountBonus', laserCountBonus)
+
+}
+
+function loadProfile(){
+let orbData=JSON.parse(window.localStorage.getItem('Orbs'))
+let totalOrbData=JSON.parse(window.localStorage.getItem('totalOrbsOverTime'))
+let cUpgradesData=JSON.parse(window.localStorage.getItem('ClickUpgrades'))
+let aUpgradesData=JSON.parse(window.localStorage.getItem('AutomaticUpgrades'))
+let clickCountBonusData=JSON.parse(window.localStorage.getItem('ClickCountBonus'))
+let laserCountBonusData=JSON.parse(window.localStorage.getItem('LaserCountBonus'))
+if (orbData) {
+  orbs=orbData
+}
+ if (totalOrbData) {
+  totalOrbsOverTime = totalOrbData
+}
+if (clickCountBonusData) {
+  clickCountBonus=clickCountBonusData
+}
+if (laserCountBonusData) {
+  laserCountBonus=laserCountBonusData
+}
+// if (cUpgradesData) {
+//   clickUpgrades=cUpgradesData
+// }
+
+// if (aUpgradesData) {
+//   automaticUpgrades=aUpgradesData
+// }
 }
 
 function drawCounts() {
@@ -84,6 +145,13 @@ function drawCounts() {
   MegaPickAxeCostDOM.innerText = megaPickAxe.price;
   ultraPickAxeCostDOM.innerText = ultraPickAxe.price;
   clickCountBonusDOM.innerText = clickCountBonus;
+  // -------------multiplies
+  pickAxeMultiplierDOM.innerText = pickaxe.multiplier*pickaxe.quantity
+  megaPickMultiplierDOM.innerText = megaPickAxe.multiplier*megaPickAxe.quantity
+  ultraPickAxeMultiplierDOM.innerText = ultraPickAxe.multiplier*ultraPickAxe.quantity
+  laserMultiplierDOM.innerText=laser.multiplier*laser.quantity
+  megaLaserMultiplierDOM.innerText= megaLaser.multiplier*megaLaser.quantity
+  ultraLaserMultiplierDOM.innerText= ultraLaser.multiplier*ultraLaser.quantity
   // ----LASERS
   laserCountDOM.innerText = laser.quantity;
   megaLaserCountDOM.innerText = megaLaser.quantity;
@@ -95,7 +163,12 @@ ultraLaserCostDOM.innerText = ultraLaser.price
 
   // ------TOTAL ORBS----
   orbDOM.innerText = orbs;
+  totalOrbsDOM.innerText= totalOrbsOverTime
   badgeReveal()
+  save()
+  
+
+ 
 }
 
 // ----Click Upgrade
@@ -107,8 +180,9 @@ function upgrade(name) {
     picks.quantity++;
     clickCountBonus += picks.multiplier;
     picks.price += picks.quantity * 2;
-    console.log(picks.price);
+   
   }
+ 
   drawCounts();
 }
 
@@ -123,6 +197,7 @@ function autoUpgradesLaser(name) {
     laserCountBonus += laser.multiplier;
   }
   console.log('hi', laserCountBonus);
+
   drawCounts();
 }
 //-------------------
@@ -132,6 +207,7 @@ function specialGun(name){
 let specialGun = automaticUpgrades.find(gun => gun.name == name)
 let specialGunBadge = document.getElementById('specialGunBadge')
 let greyOut = document.getElementById('special1')
+clearInterval(collectAutoUpgrades)
 if (specialGun.quantity >=1) {
   greyOut.className += 'grey-out'
   specialGun.price= 0
@@ -144,6 +220,7 @@ if (orbs > specialGun.price) {
   laserCountBonus += specialGun.multiplier
 specialGunBadge.className -= 'visually-hidden'
 }
+
 drawCounts()
 }
 // ----------------------
@@ -197,27 +274,40 @@ function makeADeal(name){
 
 // -------------------------------------------------------------
 
-function pickMultiplier(){
-  
+
+
+// ------------------------------------------------
+function timing(){
+timerSeconds--
 }
-
-
 
 // -----------------------------------------
+
 function collectAutoUpgrades() {
-  orbs += laserCountBonus;
-  // console.log(autoUpgrades, orbs);
-  drawCounts();
-}
-// -----------------------------------------------------------
-function timer() {
   let timerDOM = document.getElementById('timer');
-  timerSeconds--;
-  if (timerSeconds < 0) {
-    timerSeconds = 3;
+ totalOrbsOverTime+= laserCountBonus
+  orbs += laserCountBonus;
+  setTimeout(timing,0)
+  if (timerSeconds <0) {
+    timerSeconds=3
   }
   timerDOM.innerText = timerSeconds;
+  
+  drawCounts();
 }
+setInterval(collectAutoUpgrades,3000)
+// -----------------------------------------------------------
+// function timer() {
+//   let timerDOM = document.getElementById('timer');
+//   timerSeconds--;
+//   if (timerSeconds < 0) {
+//     timerSeconds = 3;
+//   }
+//   timerDOM.innerText = timerSeconds;
+// }
+// ----------------------------------------------------
+
+
 // ------------------------------------------------
 function click(event) {
   const template = document
@@ -238,12 +328,13 @@ function colorchange() {
 
 // ------------------------------------------------
 function addAlien() {
+  let thing = automaticUpgrades.find(item1 => item1.name == 'callForHelp')
   let alienMarquee = document.getElementById('alienmarquee');
 
   let template = `<img src="./resources/Alien1.png" alt="" srcset="" style="width: 2rem;">`;
 
 
-  if (callForHelpz.quantity > 5) {
+  if (thing.quantity > 5) {
     return
   }
   alienMarquee.innerHTML += template;
@@ -311,14 +402,7 @@ function changeImage() {
 }
 
 // function cannotPurchase(){
-//   let whatever = document.querySelector('#pickaxeIcon')
-//   clickUpgrades.forEach(pickaxe =>{
-// if (orbs>=pickaxe.price) {
-//     whatever.className -= 'cannotpurchase'
-    
-//   } 
-//   })
-  
+
 // }
 
 
@@ -360,34 +444,34 @@ if (laserCountBonus > 10) {
 // --------------------------------------------------------------------------
 
 
-const cursor = document.querySelector(".cursor")
-var timeout
-//follow cursor on mouse move 
-document.addEventListener("mousemove", (e) =>{
-  let x = e.pageX
-  let y = e.pageY
-  cursor.style.top = y +"px"
-  cursor.style.left = x + "px"
-  cursor.style.display = "block"
+// const cursor = document.querySelector(".cursor")
+// var timeout
 
-function mouseStopped(){
-  cursor.style.display = 'none'
+// document.addEventListener("mousemove", (e) =>{
+//   let x = e.pageX
+//   let y = e.pageY
+//   cursor.style.top = y +"px"
+//   cursor.style.left = x + "px"
+//   cursor.style.display = "block"
 
-}
+// function mouseStopped(){
+//   cursor.style.display = 'none'
 
-clearTimeout(timeout)
-timeout = setTimeout(mouseStopped,1000)
+// }
 
-})
-document.addEventListener("mouseout", () => {
-  cursor.style.display = "none"
-})
+// clearTimeout(timeout)
+// timeout = setTimeout(mouseStopped,1000)
+
+// })
+// document.addEventListener("mouseout", () => {
+//   cursor.style.display = "none"
+// })
 
 // ----------------------------------------------------------------
 
 
 
-setInterval(collectAutoUpgrades, 3000);
-setInterval(timer, 1000);
+// setInterval(collectAutoUpgrades, 3000);
+// setInterval(timer, 1000);
 drawCounts();
 

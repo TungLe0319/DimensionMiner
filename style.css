@@ -103,12 +103,14 @@ border-radius: 50%;
 
 
 
-/* 
+
 .cannotPurchase{
+ 
+  filter: grayscale(100%)!important;
   transition: all 2s eas;
 border: 10px solid red;
   
-} */
+}
 
 
 /* .tooltip-wrap {

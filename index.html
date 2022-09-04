@@ -88,9 +88,9 @@
 
 
              <!-- SECTION BADGES -->
-         <div class="section container-fluid">
+         <div class="section container-fluid ">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3 ms-3">
               <span
               id="badge1" class="visually-hidden"><img
                src="./resources/AlienMedal4.png"
@@ -173,6 +173,17 @@
 </span>
   <!-- --------------------------------------------------------- -->
 
+            </div>
+          </div>
+          <div class="row">
+            <!-- SECTION COLLECTED OVER ALL TIME -->
+            <div class="col-md-12">
+              <small>
+                <small class="text-light">Collected Over All Time</small><br>
+                <span id="totalOrb-amount" class="text-info numberFont fs-1">
+                <p>0</p>
+                </span>
+              </small>
             </div>
           </div>
          </div>
@@ -284,7 +295,10 @@
             >
             <!-- <img src="https://c.tenor.com/adJYEUbjbSgAAAAd/pondering-my-orb-monkey-swimming.gif" alt="" style="width:10rem;height:10rem"> -->
             <!-- NOTE SPAN orb-total-amount -->
-            <span id="orb-amount" class="text-danger numberFont fs-1"
+            <span id="orb-amount" class="text-danger numberFont fs-1">
+              <p>0</p></span>
+            <br>
+            <span id="totalOrb-amount" class="text-info numberFont fs-1"
               ><p>0</p></span
             >
           </div>
@@ -334,9 +348,9 @@
                     onclick="upgrade('pickaxe')"
                     src="./resources/pickaxe.png"
                     alt=""
-                    class="cursor-stuff itemglow rounded-circle "
+                    class="cursor-stuff itemglow rounded-circle  "
                     style="width: 4rem"
-                   
+                 
                   />
 
                   <img
@@ -505,7 +519,10 @@
                       style="width: 2rem"
                     />
                     <small> | </small>
-                    <span id="pickaxe-count" class="text-danger">0</span><br />
+                    <span id="pickaxe-count" class="text-danger">0</span>
+                    <span class="mx-3"><img src="./resources/right-arrow.png" alt="" style="width: 1rem;"></span>
+                    <span>+</span>
+                    <span id="pickAxeMultiplier" class="text-warning">0</span>
                   </div>
                   <!-- MEGA PICK -->
                   <div class="">
@@ -517,7 +534,10 @@
                       style="width: 2rem"
                     />
                     <small>|</small>
-                    <span id="megapickaxe-count" class="text-danger">0</span
+                    <span id="megapickaxe-count" class="text-danger">0</span>
+                    <span class="mx-3"><img src="./resources/right-arrow.png" alt="" style="width: 1rem;"></span>
+                    <span>+</span>
+                    <span id="megaPickAxe-Multiplier" class="text-warning">0</span
                     ><br />
                   </div>
                   <!-- ULTRAPICK -->
@@ -531,7 +551,10 @@
                     />
 
                     <small>|</small>
-                    <span id="ultraPickaxe-count" class="text-danger">0</span
+                    <span id="ultraPickaxe-count" class="text-danger">0</span>
+                    <span class="mx-3"><img src="./resources/right-arrow.png" alt="" style="width: 1rem;"></span>
+                    <span>+</span>
+                    <span id="ultraPickAxe-Multiplier" class="text-warning  ">0</span
                     ><br />
                   </div>
                 </div>
@@ -546,7 +569,11 @@
                   />
 
                   <small>|</small>
-                  <span id="laser-count" class="text-danger">0</span><br />
+                  <span id="laser-count" class="text-danger">0</span>
+                  <span class="mx-3"><img src="./resources/right-arrow.png" alt="" style="width: 1rem;"></span>
+                  <span>+</span>
+                  <span id="laser-Multiplier"  class="text-warning">0</span>
+                  <br />
                   <!-- -------------------- -->
                   <!-- autoupgradetwo -->
                   <img
@@ -557,7 +584,10 @@
                   />
 
                   <small>|</small>
-                  <span id="megalaser-count" class="text-danger">0</span><br />
+                  <span id="megalaser-count" class="text-danger">0</span>
+                  <span class="mx-3"><img src="./resources/right-arrow.png" alt="" style="width: 1rem;"></span>
+                  <span>+</span>
+                  <span id="megaLaser-Multiplier" class="text-warning">0</span><br />
                   <!-- ---------------- -->
                   <!-- autoupgrade3 -->
                   
@@ -569,6 +599,9 @@
                   />
                   <small>|</small>
                   <span id="ultralaser-count" class="text-danger">0</span>
+                  <span class="mx-3"><img src="./resources/right-arrow.png" alt="" style="width: 1rem;"></span>
+                  <span>+</span>
+                  <span id="ultraLaser-Multiplier"  class="text-warning">0</span>
                   <!-- ------------- -->
                 </div>
                 <!-- --------------------- -->
