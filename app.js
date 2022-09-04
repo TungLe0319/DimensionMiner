@@ -11,7 +11,8 @@ let automaticUpgrades = [
   { name: 'ultralaser', price: 1000, quantity: 0, multiplier: 100 },
 ];
 
-
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 
 // GLOBAL VARIABLES]
@@ -63,6 +64,8 @@ audio.play()
   colorchange();
   drawCounts();
   changeImage();
+
+
  
 }
 
@@ -172,7 +175,9 @@ let possibleBosses= ['https://media1.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.gi
 'https://media2.giphy.com/media/5Rg9bh6LyLKuY/giphy.gif?cid=ecf05e47snlxpgkpnyqzzetx78hx1ljx472ox5d2x2epjp12&rid=giphy.gif&ct=g',
 'https://media1.giphy.com/media/l1KVbbEBi4keD6jlu/giphy.gif?cid=ecf05e47murua58yw20e67n8axnunobbbro5giwymznom9xk&rid=giphy.gif&ct=g',
 'https://media0.giphy.com/media/l41m5M6KnkGywFyXS/giphy.gif?cid=ecf05e479ue6rlb6iek04tiz66kb7w8i8i2xqipwxbbtsozp&rid=giphy.gif&ct=g',
-'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp', 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp', 'https://media4.giphy.com/media/QVUgDYLg7ezR5mBtv0/giphy.gif?cid=ecf05e47adqrbr4mkib6tghaxyclcjaqpcvtwqk45dxu8qqi&rid=giphy.gif&ct=g' ]
+'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp', 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp', 'https://media4.giphy.com/media/QVUgDYLg7ezR5mBtv0/giphy.gif?cid=ecf05e47adqrbr4mkib6tghaxyclcjaqpcvtwqk45dxu8qqi&rid=giphy.gif&ct=g',
+'https://media0.giphy.com/media/s5arkl7ICEsyMsyUXA/giphy.gif?cid=ecf05e47jxg38zp7ug8oucls6ap26h4uyuv4bqlqxa0z4vf6&rid=giphy.gif&ct=g',
+'https://media2.giphy.com/media/8UI85273lC1VzEgkyW/giphy.gif?cid=ecf05e47drca92pkxoxzmwd718zeljpc2z9ocn2fc8c9x4kt&rid=giphy.gif&ct=g' ]
 function changeImage() {
  let i = Math.floor(Math.random() * possibleBosses.length)
  atomOrbDOM.src = possibleBosses[i]
@@ -202,6 +207,51 @@ function changeImage() {
   //  break;
   // }
 }
+
+// function cannotPurchase(){
+//   let whatever = document.querySelector('#pickaxeIcon')
+//   clickUpgrades.forEach(pickaxe =>{
+// if (orbs>=pickaxe.price) {
+//     whatever.className -= 'cannotpurchase'
+    
+//   } 
+//   })
+  
+// }
+
+
+
+
+
+
+
+const cursor = document.querySelector(".cursor")
+var timeout
+//follow cursor on mouse move 
+document.addEventListener("mousemove", (e) =>{
+  let x = e.pageX
+  let y = e.pageY
+  cursor.style.top = y +"px"
+  cursor.style.left = x + "px"
+  cursor.style.display = "block"
+
+function mouseStopped(){
+  cursor.style.display = 'none'
+
+}
+
+clearTimeout(timeout)
+timeout = setTimeout(mouseStopped,1000)
+
+})
+document.addEventListener("mouseout", () => {
+  cursor.style.display = "none"
+})
+
+// 
+
+
+
 setInterval(collectAutoUpgrades, 3000);
 setInterval(timer, 1000);
 drawCounts();

@@ -3,6 +3,10 @@
   font-family: 'Audiowide', cursive;
 }
 
+body{
+  cursor: none;
+}
+
 
 .cb{
   color: #00ff42;
@@ -11,6 +15,13 @@
   font-family: 'Fascinate Inline', cursive;
 }
  
+.welcome-card{
+  
+  height: 100vh;
+  background-image: url(https://media0.giphy.com/media/xTiTnDmTbJl1rGeIEg/giphy.gif?cid=ecf05e47zq54bqm8tqwc767qawgm313a6tb26hux0pyl5bu7&rid=giphy.gif&ct=gp);
+  background-position: center;
+  background-size: cover;
+}
 
 main{
   height: 100vh;
@@ -21,7 +32,7 @@ main{
 
 .orb{
   
-  background-image: url(https://i.giphy.com/media/MA0vkDWZNtO9vPfkUC/giphy.webp);
+  background-image: url(./resources/giphy-unscreen.gif);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -42,8 +53,74 @@ margin-top: 10rem;
 
 .cursor-stuff{
   user-select: none;
-  cursor: pointer;
+  cursor: none
 }
+
+
+.cursor{
+  z-index: 999;
+  background: #2696e8;
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow:  0 0 20px #2696e8,
+   0 0 60px #2696e8,
+  0 0 100px #2696e8;
+  animation: colors 5s infinite;
+  transform: translate(-50%,-50%);
+  display: none;
+}
+
+.cursor:before{
+content: '';
+position: absolute;
+background:#2696e8 ;
+width: 50px;
+height: 50px;
+opacity: 0.2;
+transform: translate(-40%,-40%);
+border-radius: 50%;
+}
+
+@keyframes colors{
+  0%{
+    filter: hue-rotate(0deg);
+  }
+  100%{
+    filter: hue-rotate(360deg);
+  }
+}
+/* 
+.cannotPurchase{
+  transition: all 2s eas;
+border: 10px solid red;
+  
+} */
+
+
+/* .tooltip-wrap {
+  position: relative;
+}
+.tooltip-wrap .tooltip-content {
+  display: none;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  background-color: #fff;
+  padding: .5em;
+  min-width: 10rem;
+}
+.tooltip-wrap:hover .tooltip-content {
+  display: block;
+} */
+
+
+
+
+
 
 .itemgrey{
   filter: grayscale(100%);
@@ -80,9 +157,7 @@ filter: hue-rotate(120deg);
   -webkit-filter: drop-shadow(12px 12px 7px rgba(255, 0, 0, 0.5));
   filter: drop-shadow( 1px 2px 2px rgba(117, 255, 239, 0.633));
 }
-/* .statstest{
-  background-image: url(https://media3.giphy.com/media/qDqBVEMsY39PIU3DCY/giphy.gif?cid=ecf05e47e5gkt7cmiv8ew8aujoqbjf76ws1ouy6l4bqyrikv&rid=giphy.gif&ct=s);
-} */
+
 /* .clickEffect{
   position:fixed;
   box-sizing:border-box;
@@ -108,56 +183,31 @@ filter: hue-rotate(120deg);
   } */
 
 
-  .progress-bar__container {
-    width: 80%;
-    height: 2rem;
-    border-radius: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s;
-    will-change: transform;
-    box-shadow: 0 0 5px #e76f51;
-  }
-  
-  .progress-bar {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    content: "";
-    background-color: #e76f51;
-    top:0;
-    bottom: 0;
-    left: -100%;
-    border-radius: inherit;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    color: white;
-    font-family: sans-serif;
-  }
-  
-  .progress-bar__text {
-    display: none;
-  }
 
   @keyframes animateHeart {
     0% {
-      transform: scale(0.8);
+      transform: scale(.85);
     }
     5% {
-      transform: scale(0.8);
+      transform: scale(.85);
     }
     10% {
-      transform: scale(0.85);
+      transform: scale(0.95);
     }
     15% {
-      transform: scale(0.85);
+      transform: scale(0.95);
+    }
+    15% {
+      transform: scale(0.95);
+    }
+    15% {
+      transform: scale(0.95);
     }
     50% {
-      transform: scale(0.8);
+      transform: scale(.85);
     }
     100% {
-      transform: scale(0.8);
+      transform: scale(.85);
     }
   }
   .heart {
@@ -175,10 +225,17 @@ filter: hue-rotate(120deg);
   .orb-glow:hover{
 
     transition: ease-in-out .3s;
-    box-shadow:0 0 50px rgb(227, 255, 15);
+    box-shadow:10px  10px 50px rgb(227, 255, 15);
     filter: brightness(100%), ;
     transform: scale(1.01);
    
+  }
+
+  .gunbg{
+    background-image: url(https://i.giphy.com/media/3o7btXYBdJbW7QPKLu/giphy.webp);
+    background-position: center;
+   background-size: cover;
+    background-repeat: no-repeat;
   }
 
   
