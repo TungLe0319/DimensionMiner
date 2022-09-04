@@ -9,8 +9,10 @@ let automaticUpgrades = [
   { name: 'laser', price: 250, quantity: 0, multiplier: 25 },
   { name: 'megalaser', price: 500, quantity: 0, multiplier: 75 },
   { name: 'ultralaser', price: 1000, quantity: 0, multiplier: 100 },
+  { name: 'specialGun', price: 10, quantity: 0, multiplier: 1000 },
+  { name: 'callForHelp', price: 10, quantity: 0, multiplier: 500 },
 ];
-
+// -----------ToolTip-----------------------------------------------
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
@@ -50,6 +52,9 @@ let ultraPickAxe = clickUpgrades.find((pickle) => pickle.name == 'ultrapickaxe')
 let laser = automaticUpgrades.find((pickle) => pickle.name == 'laser');
 let megaLaser = automaticUpgrades.find((pickle) => pickle.name == 'megalaser');
 let ultraLaser = automaticUpgrades.find((pickle) => pickle.name == 'ultralaser');
+// ----------------------------------------------------------------
+let callForHelpz = automaticUpgrades.find(bananaWord => bananaWord.name == 'callForHelp')
+// let specialGunz = automaticUpgrades.find(pickle => pickle.name == 'specialGun')
 // STUB FOR TIMER
 let timerSeconds = 3;
 const audio = new Audio()
@@ -89,6 +94,7 @@ ultraLaserCostDOM.innerText = ultraLaser.price
 
   // ------TOTAL ORBS----
   orbDOM.innerText = orbs;
+  badgeReveal()
 }
 
 // ----Click Upgrade
@@ -119,19 +125,48 @@ function autoUpgradesLaser(name) {
   drawCounts();
 }
 //-------------------
+
+// -----------------------------
+function specialGun(name){
+let specialGun = automaticUpgrades.find(gun => gun.name == name)
+let specialGunBadge = document.getElementById('specialGunBadge')
+if (orbs > specialGun.price) {
+  orbs -= specialGun.price
+  specialGun.quantity++
+  laserCountBonus += specialGun.multiplier
+specialGunBadge.className -= 'visually-hidden'
+}
+drawCounts()
+}
+// ----------------------
+// -----------------------------
+function callForHelp(name){
+let callForHelp= automaticUpgrades.find(help => help.name == name)
+// let callForHelpBadge = document.getElementById('callForHelpBadge')
+if (orbs > callForHelp.price) {
+  orbs -= callForHelp.price
+  callForHelp.quantity++
+  laserCountBonus += callForHelp.multiplier
+// callForHelpBadge.className -= 'visually-hidden'
+}
+addAlien()
+addLaser()
+drawCounts()
+}
+// ----------------------
 function pickMultiplier(){
   
 }
 
 
 
-// -----------------
+// -----------------------------------------
 function collectAutoUpgrades() {
   orbs += laserCountBonus;
   // console.log(autoUpgrades, orbs);
   drawCounts();
 }
-// -----------------------------------------
+// -----------------------------------------------------------
 function timer() {
   let timerDOM = document.getElementById('timer');
   timerSeconds--;
@@ -151,61 +186,85 @@ function click(event) {
   document.appendChild(element);
 }
 
+// -----------------------------------------------------
 function colorchange() {
   let orbElem = document.getElementById('atomOrb');
   let rNum = Math.floor(Math.random() * 360);
   orbElem.style.filter = 'hue-rotate(' + rNum + 'deg)';
 }
 
+// ------------------------------------------------
 function addAlien() {
   let alienMarquee = document.getElementById('alienmarquee');
 
-  let template = `<img src="./resources/Alien.png" alt="" srcset="" style="width: 2rem;">`;
+  let template = `<img src="./resources/Alien1.png" alt="" srcset="" style="width: 2rem;">`;
 
+
+  if (callForHelpz.quantity > 5) {
+    return
+  }
   alienMarquee.innerHTML += template;
 }
+// --------------------------------------------------------
 function addLaser() {
   let laserMarquee = document.getElementById('lasermarquee');
   let template = ` <img src="https://media2.giphy.com/media/1rOy1l3mulySaqilto/giphy.gif?cid=ecf05e47oc9d0htfhowppmrlwdqgkhipbq2wuokomsbcvi6f&rid=giphy.gif&ct=s" alt="" srcset="" style="width: 2rem;">`;
+  if (callForHelpz.quantity > 5) {
+    return
+  }
   laserMarquee.innerHTML += template;
 }
 
+// --------------------------------------------------------------------------------
 
-let possibleBosses= ['https://media1.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.gif?cid=ecf05e47k15dvss3xmpuj6gftxjj4i9peyuhmidcpvhldp4p&rid=giphy.gif&ct=g',
-'https://media2.giphy.com/media/5Rg9bh6LyLKuY/giphy.gif?cid=ecf05e47snlxpgkpnyqzzetx78hx1ljx472ox5d2x2epjp12&rid=giphy.gif&ct=g',
-'https://media1.giphy.com/media/l1KVbbEBi4keD6jlu/giphy.gif?cid=ecf05e47murua58yw20e67n8axnunobbbro5giwymznom9xk&rid=giphy.gif&ct=g',
-'https://media0.giphy.com/media/l41m5M6KnkGywFyXS/giphy.gif?cid=ecf05e479ue6rlb6iek04tiz66kb7w8i8i2xqipwxbbtsozp&rid=giphy.gif&ct=g',
-'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp', 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp', 'https://media4.giphy.com/media/QVUgDYLg7ezR5mBtv0/giphy.gif?cid=ecf05e47adqrbr4mkib6tghaxyclcjaqpcvtwqk45dxu8qqi&rid=giphy.gif&ct=g',
-'https://media0.giphy.com/media/s5arkl7ICEsyMsyUXA/giphy.gif?cid=ecf05e47jxg38zp7ug8oucls6ap26h4uyuv4bqlqxa0z4vf6&rid=giphy.gif&ct=g',
-'https://media2.giphy.com/media/8UI85273lC1VzEgkyW/giphy.gif?cid=ecf05e47drca92pkxoxzmwd718zeljpc2z9ocn2fc8c9x4kt&rid=giphy.gif&ct=g' ]
+// let possibleBosses= ['https://media1.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.gif?cid=ecf05e47k15dvss3xmpuj6gftxjj4i9peyuhmidcpvhldp4p&rid=giphy.gif&ct=g',
+// 'https://media2.giphy.com/media/5Rg9bh6LyLKuY/giphy.gif?cid=ecf05e47snlxpgkpnyqzzetx78hx1ljx472ox5d2x2epjp12&rid=giphy.gif&ct=g',
+// 'https://media1.giphy.com/media/l1KVbbEBi4keD6jlu/giphy.gif?cid=ecf05e47murua58yw20e67n8axnunobbbro5giwymznom9xk&rid=giphy.gif&ct=g',
+// 'https://media0.giphy.com/media/l41m5M6KnkGywFyXS/giphy.gif?cid=ecf05e479ue6rlb6iek04tiz66kb7w8i8i2xqipwxbbtsozp&rid=giphy.gif&ct=g',
+// 'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp', 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp', 'https://media4.giphy.com/media/QVUgDYLg7ezR5mBtv0/giphy.gif?cid=ecf05e47adqrbr4mkib6tghaxyclcjaqpcvtwqk45dxu8qqi&rid=giphy.gif&ct=g',
+// 'https://media0.giphy.com/media/s5arkl7ICEsyMsyUXA/giphy.gif?cid=ecf05e47jxg38zp7ug8oucls6ap26h4uyuv4bqlqxa0z4vf6&rid=giphy.gif&ct=g',
+// 'https://media2.giphy.com/media/8UI85273lC1VzEgkyW/giphy.gif?cid=ecf05e47drca92pkxoxzmwd718zeljpc2z9ocn2fc8c9x4kt&rid=giphy.gif&ct=g' ]
 function changeImage() {
- let i = Math.floor(Math.random() * possibleBosses.length)
- atomOrbDOM.src = possibleBosses[i]
-  // switch (orbs) {
+
+  switch (orbs) {
    
-  //   case 10:
-  //     atomOrbDOM.src = 'https://media1.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.gif?cid=ecf05e47k15dvss3xmpuj6gftxjj4i9peyuhmidcpvhldp4p&rid=giphy.gif&ct=g'
-  //     break;
-  //     case 15:
-  //       atomOrbDOM.src = 'https://media2.giphy.com/media/5Rg9bh6LyLKuY/giphy.gif?cid=ecf05e47snlxpgkpnyqzzetx78hx1ljx472ox5d2x2epjp12&rid=giphy.gif&ct=g'
-  //       break;
-  //     case 20:
-  //       // CHANGE THIS ONE
-  //       atomOrbDOM.src = 'https://media1.giphy.com/media/l1KVbbEBi4keD6jlu/giphy.gif?cid=ecf05e47murua58yw20e67n8axnunobbbro5giwymznom9xk&rid=giphy.gif&ct=g'
-  //       break;
-  //     case 25:
-  //       atomOrbDOM.src = 'https://media0.giphy.com/media/l41m5M6KnkGywFyXS/giphy.gif?cid=ecf05e479ue6rlb6iek04tiz66kb7w8i8i2xqipwxbbtsozp&rid=giphy.gif&ct=g'
-  //  break;
-  //     case 30:
-  //       atomOrbDOM.src = 'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp'
-  //  break;
-  //     case 35:
-  //       atomOrbDOM.src = 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp'
-  //  break;
-  //     case 40:
-  //       atomOrbDOM.src = 'https://media4.giphy.com/media/QVUgDYLg7ezR5mBtv0/giphy.gif?cid=ecf05e47adqrbr4mkib6tghaxyclcjaqpcvtwqk45dxu8qqi&rid=giphy.gif&ct=g'
-  //  break;
-  // }
+    case 10:
+      atomOrbDOM.src = 'https://media1.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.gif?cid=ecf05e47k15dvss3xmpuj6gftxjj4i9peyuhmidcpvhldp4p&rid=giphy.gif&ct=g'
+      break;
+      case 20:
+        atomOrbDOM.src = 'https://media2.giphy.com/media/5Rg9bh6LyLKuY/giphy.gif?cid=ecf05e47snlxpgkpnyqzzetx78hx1ljx472ox5d2x2epjp12&rid=giphy.gif&ct=g'
+        break;
+      case 30:
+        // CHANGE THIS ONE
+        atomOrbDOM.src = 'https://i.giphy.com/media/QVUgDYLg7ezR5mBtv0/giphy.webp'
+        break;
+      case 33:
+        // CHANGE THIS ONE
+        atomOrbDOM.src = 'https://media3.giphy.com/media/otzvbOMu2qSVMOoTTX/giphy.gif?cid=ecf05e47kliopf6ieuoqymmtm40cmesy1l0i7li9tdgmspmy&rid=giphy.gif&ct=g'
+        break;
+      case 35:
+        // CHANGE THIS ONE
+        atomOrbDOM.src = 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp'
+        break;
+      case 40:
+        atomOrbDOM.src = 'https://media0.giphy.com/media/l41m5M6KnkGywFyXS/giphy.gif?cid=ecf05e479ue6rlb6iek04tiz66kb7w8i8i2xqipwxbbtsozp&rid=giphy.gif&ct=g'
+   break;
+      case 45:
+        atomOrbDOM.src = 'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp'
+   break;
+      case 50:
+        atomOrbDOM.src = 'https://media1.giphy.com/media/hq64aPc8ExJpiXgRtR/giphy.gif?cid=ecf05e475educocpy8myhtzs1my3m0gif81dc384mrbkpclr&rid=giphy.gif&ct=g'
+   break;
+      case 55:
+        atomOrbDOM.src = 'https://media3.giphy.com/media/fjxtT75gj7LrN3AHT3/giphy.gif?cid=ecf05e47p46wyrcs2gq8uehovssnmhb084m10tej0dzsnatt&rid=giphy.gif&ct=g'
+   break;
+      case 60:
+        atomOrbDOM.src = 'https://i.giphy.com/media/s5arkl7ICEsyMsyUXA/giphy.webp'
+   break;
+      case 70:
+        atomOrbDOM.src = 'https://media1.giphy.com/media/kAQmvq1JXvca8fdGf4/giphy.gif?cid=ecf05e47qki7e1rkk7x2bnrtepgpl1xcruuf600v75wudg7c&rid=giphy.gif&ct=g'
+   break;
+  }
 }
 
 // function cannotPurchase(){
@@ -220,9 +279,42 @@ function changeImage() {
 // }
 
 
+// -----------------------------------------------------------------------
+function badgeReveal(){
+  let badge1=document.getElementById('badge1')
+  let badge2=document.getElementById('badge2')
+  let badge3=document.getElementById('badge3')
+  let badge4=document.getElementById('badge4')
+let pickBadge= document.getElementById('badge5')
+let laserBadge=document.getElementById('badge6')
+ switch (orbs ) {
+  case 10:
+    badge1.className -= 'visually-hidden'
+    break;
+  case 20:
+    badge2.className -= 'visually-hidden'
+    break;
+  case 30:
+    badge3.className -= 'visually-hidden'
+    break;
+  case 25:
+    badge4.className -= 'visually-hidden'
+    break;
+ 
+  default:
+    break;
+ }
 
+if (clickCountBonus > 10) {
+  pickBadge.className -= 'visually-hidden'
+}
 
+if (laserCountBonus > 10) {
+  laserBadge.className -= ' visually-hidden'
+}
+}
 
+// --------------------------------------------------------------------------
 
 
 const cursor = document.querySelector(".cursor")
@@ -248,7 +340,7 @@ document.addEventListener("mouseout", () => {
   cursor.style.display = "none"
 })
 
-// 
+// ----------------------------------------------------------------
 
 
 

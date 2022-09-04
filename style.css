@@ -77,12 +77,21 @@ margin-top: 10rem;
 content: '';
 position: absolute;
 background:#2696e8 ;
-width: 50px;
-height: 50px;
+width: 30px;
+height: 30px;
 opacity: 0.2;
-transform: translate(-40%,-40%);
+transform: translate(-35%,-35%);
 border-radius: 50%;
 }
+
+
+
+
+
+
+
+
+
 
 @keyframes colors{
   0%{
@@ -92,6 +101,20 @@ border-radius: 50%;
     filter: hue-rotate(360deg);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 .cannotPurchase{
   transition: all 2s eas;
@@ -116,8 +139,6 @@ border: 10px solid red;
 .tooltip-wrap:hover .tooltip-content {
   display: block;
 } */
-
-
 
 
 
@@ -157,30 +178,6 @@ filter: hue-rotate(120deg);
   -webkit-filter: drop-shadow(12px 12px 7px rgba(255, 0, 0, 0.5));
   filter: drop-shadow( 1px 2px 2px rgba(117, 255, 239, 0.633));
 }
-
-/* .clickEffect{
-  position:fixed;
-  box-sizing:border-box;
-  border-style:solid;
-  border-color:#ffbf00;
-  border-radius:50%;
-  animation:clickEffect 0.4s ease-out;
-  z-index:99999;
-  }
-  @keyframes clickEffect{
-  0%{
-  opacity:1;
-  width:0.5em; height:0.5em;
-  margin:-0.25em;
-  border-width:0.5em;
-  }
-  100%{
-  opacity:0.2;
-  width:15em; height:15em;
-  margin:-7.5em;
-  border-width:0.03em;
-  }
-  } */
 
 
 
@@ -237,7 +234,19 @@ filter: hue-rotate(120deg);
    background-size: cover;
     background-repeat: no-repeat;
   }
-
+  .alienhelp{
+    background-image: url(https://media1.giphy.com/media/lFNmSjRDN9SiLJ3a9Z/giphy.gif?cid=ecf05e473a60wa3itj009scrasgatgvk73i1t83e3fvs5hqy&rid=giphy.gif&ct=g);
+    background-position: center;
+   background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .makeadeal{
+    background-image: url(https://media4.giphy.com/media/DYGbtrltNhHVX7xZTk/giphy.gif?cid=ecf05e47inhvtff9mcmuyw22019k8o23rajae4esyeocaxib&rid=giphy.gif&ct=g);
+    background-position: center;
+   background-size: cover;
+    background-repeat: no-repeat;
+  }
   
   @keyframes cf4FadeInOut {
     0% {

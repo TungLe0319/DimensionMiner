@@ -58,7 +58,7 @@
 <div class="cursor" style="top: 304px; left:888px"></div>
     <header class="container-fluid">
       <div class="row">
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center bg-dark text-light">
           <h1>MOON MINER TUNG</h1>
           
         </div>
@@ -86,6 +86,79 @@
       </div></section>
     <main class="">
 
+
+             <!-- SECTION BADGES -->
+         <div class="section container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <span
+              id="badge1" class="visually-hidden"><img
+               src="./resources/AlienMedal4.png"
+               class=" heart rounded-circle shadow-filter "
+               style="width: 3rem"
+               data-bs-toggle="tooltip" data-bs-placement="bottom"
+               data-bs-title="Badge: 1k Orbs Collected && Defeated 1st Boss"/>
+            </span>
+            <!-- ----------------- -->
+            <span
+            id="badge2" class="visually-hidden"><img
+             src="./resources/AlienMedal2.png"
+             class=" heart rounded-circle shadow-filter "
+             style="width: 3rem"
+             data-bs-toggle="tooltip" data-bs-placement="bottom"
+             data-bs-title="Badge: 5k Orbs Collected && Defeated 2nd Boss"/>
+          </span>
+          <!-- -------------------------- -->
+          <span
+          id="badge3" class="visually-hidden"><img
+           src="./resources/AlienMedal3.png"
+           class=" heart rounded-circle shadow-filter "
+           style="width: 3rem"
+           data-bs-toggle="tooltip" data-bs-placement="bottom"
+           data-bs-title="Badge: 10k Orbs Collected && Defeated 3rd Boss"/>
+        </span>
+        <!-- ----------------- -->
+        <span
+        id="badge4" class="visually-hidden"><img
+         src="./resources/AlienMedal1.png"
+         class=" heart rounded-circle shadow-filter "
+         style="width: 3rem"
+         data-bs-toggle="tooltip" data-bs-placement="bottom"
+         data-bs-title="Badge: 20k Orbs Collected && Defeated 4th Boss"/>
+      </span>
+      <!-- ------------------------- -->
+      <span
+      id="badge5" class="visually-hidden"><img
+       src="./resources/pickaxebadge.png"
+       class=" heart rounded-circle shadow-filter "
+       style="width: 3rem"
+       data-bs-toggle="tooltip" data-bs-placement="bottom"
+       data-bs-title="Badge: 5k Click Bonus Added"/>
+    </span>
+    <!-- ------------- -->
+    <span
+    id="badge6" class="visually-hidden"><img
+     src="./resources/laser.png"
+     class=" heart rounded-circle shadow-filter "
+     style="width: 3rem"
+     data-bs-toggle="tooltip" data-bs-placement="bottom"
+     data-bs-title="Badge: 5k Automatic Bonus Added"/>
+  </span>
+  <!-- ----------------------- -->
+    <span
+    id="specialGunBadge" class="visually-hidden"><img
+     src="https://i.giphy.com/media/L2UHsn6f4Vmw4Dt8p3/giphy.webp"
+     class=" heart rounded-circle shadow-filter "
+     style="width: 3rem"
+     data-bs-toggle="tooltip" data-bs-placement="bottom"
+     data-bs-title="Badge: Can't believe you actually got this OP Gun..."/>
+  </span>
+            </div>
+          </div>
+         </div>
+     
+   
+
       <!-- MAIN SECTION -->
       <section class="container pt-3">
         <div class="row justify-content-evenly">
@@ -95,43 +168,62 @@
             class="orb col-md-3 d-flex justify-content-center heart"
           >
             <!-- GIF IMAGE HERE -->
-            <img
+         <img
               id="atomOrb"
               onclick=""
               src="https://64.media.tumblr.com/08e067f324fe4667c381990355329c97/tumblr_n5u9j9NycV1rf78nfo1_400.gifv"
               alt="Insulated"
-              class="img-fluid rounded-circle heart test orb-glow opacity-75"
+              class="img-fluid rounded-circle heart test orb-glow opacity-75 glowing-circle "
             />
-            
+           
+          
             <!-- NOTE AUDIO HERE -->
             
           </div>
+          
         </div>
       </section>
-      <!-- SECTION MARQUEE LAZER -->
+      <!-- SECTION MARQUEE LAZER AND ATOM GUN -->
       <section class="container-fluid alienandlaser">
-        
         <div class="row">
-          <div class="col-md-12 d-flex align-content-center">
+          <div class="col-md-12 d-flex justify-content-center">
+            <img
+            src="https://media3.giphy.com/media/9Deey0LLskZPXAQG1v/giphy.gif?cid=ecf05e47qw26l8cc68xewgm30rtc8j2pxs8bksknd6py1ark&rid=giphy.gif&ct=s"
+            alt=""
+            class=""
+            style="width: 3rem"
+          />
+          </div></div>
+        <div class="row">
+          <div class="col-md-12 d-flex justify-content-center">
+            <img
+            src="https://i.giphy.com/media/L2UHsn6f4Vmw4Dt8p3/giphy.webp"
+            alt=""
+            class=""
+            style="width: 3rem"
+          />
+          </div></div>
+        <div class="row">
+          <div id="cookie" class="col-md-12 d-flex align-content-center">
             <marquee id="lasermarquee" width="100%" direction="right" height="">
-              <img
+              <!-- <img
                 src="https://media2.giphy.com/media/1rOy1l3mulySaqilto/giphy.gif?cid=ecf05e47oc9d0htfhowppmrlwdqgkhipbq2wuokomsbcvi6f&rid=giphy.gif&ct=s"
                 alt=""
                 srcset=""
                 style="width: 2rem"
-              />
+              /> -->
             </marquee>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 d-flex align-content-center">
             <marquee id="alienmarquee" width="100%" direction="right" height="">
-              <img
+              <!-- <img
                 src="./resources/Alien1.png"
                 alt=""
                 srcset=""
                 style="width: 2rem"
-              />
+              /> -->
             </marquee>
           </div>
         </div>
@@ -140,6 +232,7 @@
       <!-- ---------- -->
       <!-- SECTION click Count and automatic Click Count -->
       <section class="container-fluid justify-content-center menubar">
+      
         <div class="row justify-content-center">
           <!-- STUB clickcount-bonus -->
           <div
@@ -307,7 +400,7 @@
                   <!-- autoupgradeone -->
                   <img
                     onclick="autoUpgradesLaser('laser')"
-                    src="./resources/AlienGun.png"
+                    src="./resources/space-gun.png"
                     alt=""
                     class="cursor-stuff itemglow rounded-circle"
                     style="width: 4rem"
@@ -328,7 +421,7 @@
                   <!-- autoupgradetwo -->
                   <img
                     onclick="autoUpgradesLaser('megalaser')"
-                    src="./resources/AlienGun.png"
+                    src="./resources/space-gun.png"
                     alt=""
                     class="cursor-stuff megalaser itemglow rounded-circle my-2"
                     style="width: 4rem"
@@ -349,7 +442,7 @@
                   <!-- autoupgrade3 -->
                   <img
                     onclick="autoUpgradesLaser('ultralaser')"
-                    src="./resources/AlienGun.png"
+                    src="./resources/space-gun.png"
                     alt=""
                     class="cursor-stuff ultralaser itemglow rounded-circle"
                     style="width: 4rem"
@@ -426,7 +519,7 @@
                 <div class="col-md-6 mt-1 bg-dark rounded-end py-2">
                   <!-- autoupgradeone -->
                   <img
-                    src="./resources/AlienGun.png"
+                    src="./resources/space-gun.png"
                     alt=""
                     class="cursor-stuff itemglow rounded-circle"
                     style="width: 2rem"
@@ -437,7 +530,7 @@
                   <!-- -------------------- -->
                   <!-- autoupgradetwo -->
                   <img
-                    src="./resources/AlienGun.png"
+                    src="./resources/space-gun.png"
                     alt=""
                     class="cursor-stuff megalaser itemglow rounded-circle my-2"
                     style="width: 2rem"
@@ -449,7 +542,7 @@
                   <!-- autoupgrade3 -->
                   
                   <img
-                    src="./resources/AlienGun.png"
+                    src="./resources/space-gun.png"
                     alt=""
                     class="cursor-stuff ultralaser itemglow rounded-circle"
                     style="width: 2rem"
@@ -460,13 +553,38 @@
                 </div>
                 <!-- --------------------- -->
                 <!-- SECTION SPECIAL GUN -->
-                <div class="col-md-3 mt-1 rounded pb-1 gunbg">
+                <div class="my-1 rounded bg-dark d-flex justify-content-evenly"><span class="ms-2 me-5">Broken Gun</span><span class="me-5">Call For Help</span>
+                <span>Make A Deal</span> </div>
+                <div class="col-md-3 mt-1 rounded pb-1 ms-4 gunbg d-flex justify-content-center border border-5 border-dark">
                   <div class="d-flex justify-content-center">
-                    <img src="https://i.giphy.com/media/L2UHsn6f4Vmw4Dt8p3/giphy.webp" alt=""  class="cursor-stuff rotate shadow-filter " style="width: 5rem;">
+                    <img 
+                    onclick="specialGun('specialGun')"
+                    src="https://i.giphy.com/media/L2UHsn6f4Vmw4Dt8p3/giphy.webp" alt=""  class="cursor-stuff rotate  shadow-filter " style="width: 5rem;">
                   </div>
                   
                 </div>
-                <!-- ---------------- -->
+                <!-- ---------SECTION CALL FOR HELP------- -->
+                <div class="col-md-3 mt-1 mx-5 rounded pb-1 alienhelp  d-flex justify-content-center  border border-5 border-dark">
+                  <div class="d-flex justify-content-center">
+                    <img 
+                    onclick="callForHelp('callForHelp')"
+                    src="./resources/Alien1.png" alt=""  class="cursor-stuff  shadow-filter " style="width: 5rem;">
+                  </div>
+                  
+                </div>
+              
+                <!-- --------SECTION MAKE A DEAL----------------- -->
+
+                <div class="col-md-3 mt-1 mx-1 rounded pb-1 makeadeal  d-flex justify-content-center  border border-5 border-dark">
+                  <div class="d-flex justify-content-center">
+                    <img 
+                    onclick="makeADeal('makeADeal')"
+                    src="https://media1.giphy.com/media/GE5LUTVEdH5LrvIppa/giphy.gif" alt=""  class="cursor-stuff  shadow-filter " style="width: 5rem;">
+                  </div>
+                  
+                </div>
+
+                <!-- ----------------------------------------- -->
               </div>
             </div>
           </div>
@@ -481,6 +599,7 @@
       src="https://kit.fontawesome.com/a2d3ad0e84.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
