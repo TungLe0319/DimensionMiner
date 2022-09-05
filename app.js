@@ -705,5 +705,5 @@ function badgeReveal() {
 
 setInterval(collectAutoUpgrades, 1000);
 // setInterval(timer, 1000);
-loadProfile()
+
 drawCounts();
