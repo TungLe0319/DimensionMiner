@@ -65,7 +65,7 @@
       </div>
     </header>
     <!-- SECTION I WANT TO HIDE -->
-    <section class="welcome-card container-fluid  bg-dark visually-hidden ">
+    <section class="welcome-card container-fluid  bg-dark  visually-hidden ">
       <div class="row  pt-5 mt-5 ps-5 ms-5">
         <div class="col-md-4 d-flex">
           <img src="https://i.giphy.com/media/3oEjHNf3ApVJpDp9vi/giphy.webp" alt="" srcset="" class="rounded-circle" style="width: 20rem;">
@@ -74,14 +74,17 @@
           <marquee behavior="scroll" direction="up" scrollamount="5"><h1 class="text-light">Please... traveler... help me from them... <br>
           hit the unknown one and collect the orbs and free me from their prison.. only you...</them></h1></marquee>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 d-flex justify-content-center mt-5">
+          
           <img
-          onclick="upgrade('pickaxe')"
-          src="./resources/pickaxe.png"
-          alt=""
-          class="cursor-stuff itemglow rounded-circle"
-          style="width: 20rem"
+          id=""
+          onclick=""
+          src="https://media3.giphy.com/media/3ohs4CacylzFaHjMM8/giphy.gif?cid=ecf05e471p62dp2o4eni61n3sxvbw17q73lcowyt3f9lbo2p&rid=giphy.gif&ct=g"
+          alt="Insulated"
+          class="img-fluid rounded-circle heart test orb-glow cursor-stuff glowing-circle "
         />
+       
+      
         </div>
       </div></section>
     <main class="">
@@ -219,18 +222,20 @@
         <div class="row">
           <div class="col-md-12 d-flex justify-content-center">
             <img
+            id="gunBeam"
             src="https://media3.giphy.com/media/9Deey0LLskZPXAQG1v/giphy.gif?cid=ecf05e47qw26l8cc68xewgm30rtc8j2pxs8bksknd6py1ark&rid=giphy.gif&ct=s"
             alt=""
-            class=""
+            class="visually-hidden"
             style="width: 3rem"
           />
           </div></div>
         <div class="row">
           <div class="col-md-12 d-flex justify-content-center">
             <img
+            id="gunGun"
             src="https://i.giphy.com/media/L2UHsn6f4Vmw4Dt8p3/giphy.webp"
             alt=""
-            class=""
+            class="visually-hidden"
             style="width: 3rem"
           />
           </div></div>
@@ -274,12 +279,9 @@
               <span id="clickCount-bonus" class="fs-1 numberFont"></span>
             </div>
             <div class="p-2">
-              <img
-                src="./resources/pointer.png"
-                alt=""
-                class=""
-                style="width: 3rem"
-              />
+              <i class="mdi mdi-cursor-default-click fs-1"></i
+                >
+             
             </div>
           </div>
           <div
@@ -307,7 +309,8 @@
           >
             <!-- autoClickCount-Bonus -->
             <!-- IMAGE hourclass -->
-            <div>
+            <div class="">
+              
               <img
                 src="./resources/hourglass.png"
                 alt=""
@@ -337,7 +340,7 @@
                 <div class="col-md-6 bg-dark rounded-start">CLICK UPGRADES</div>
                 <div class="col-md-6 bg-dark rounded-end">AUTO UPGRADES</div>
                 <div
-                  class="col-md-6 mt-1 bg-dark rounded-start border-end py-2"
+                  class="col-md-6 mt-1 bg-dark rounded-start border-end py-2 "
                 >
                   <!-- PICKAXE -->
 
@@ -348,7 +351,7 @@
                     onclick="upgrade('pickaxe')"
                     src="./resources/pickaxe.png"
                     alt=""
-                    class="cursor-stuff itemglow rounded-circle  "
+                    class="cursor-stuff itemglow rounded-circle cannotPurchase "
                     style="width: 4rem"
                  
                   />
@@ -373,11 +376,11 @@
                   <!-- MEGA PICK AXE -->
 
                   <img
-                    id="pickimg"
+                    id="megaPickAxeIcon"
                     onclick="upgrade('megapickaxe')"
                     src="./resources/pickaxe.png"
                     alt=""
-                    class="cursor-stuff megapickaxe mt-2 itemglow rounded-circle"
+                    class="cursor-stuff megapickaxe mt-2 itemglow rounded-circle  cannotPurchase"
                     style="width: 4rem"
                   />
 
@@ -401,11 +404,11 @@
                   <!-- ULTRA PICK -->
 
                   <img
-                    id="pickimg"
+                    id="ultraPickAxeIcon"
                     onclick="upgrade('ultrapickaxe')"
                     src="./resources/pickaxe.png"
                     alt=""
-                    class="cursor-stuff ultramegapickaxe mt-2 itemglow rounded-circle"
+                    class="cursor-stuff ultramegapickaxe mt-2 itemglow rounded-circle  cannotPurchase"
                     style="width: 4rem"
                   />
 
@@ -433,10 +436,11 @@
                 >
                   <!-- autoupgradeone -->
                   <img
+                  id="laserIcon"
                     onclick="autoUpgradesLaser('laser')"
                     src="./resources/space-gun.png"
                     alt=""
-                    class="cursor-stuff itemglow rounded-circle"
+                    class="cursor-stuff itemglow rounded-circle cannotPurchase"
                     style="width: 4rem"
                   />
 
@@ -454,10 +458,11 @@
                   <!-- -------------------- -->
                   <!-- autoupgradetwo -->
                   <img
+                  id="megaLaserIcon"
                     onclick="autoUpgradesLaser('megalaser')"
                     src="./resources/space-gun.png"
                     alt=""
-                    class="cursor-stuff megalaser itemglow rounded-circle my-2"
+                    class="cursor-stuff megalaser itemglow rounded-circle my-2 cannotPurchase"
                     style="width: 4rem"
                   />
 
@@ -475,10 +480,11 @@
                   <!-- ---------------- -->
                   <!-- autoupgrade3 -->
                   <img
+                  id="ultraLaserIcon"
                     onclick="autoUpgradesLaser('ultralaser')"
                     src="./resources/space-gun.png"
                     alt=""
-                    class="cursor-stuff ultralaser itemglow rounded-circle"
+                    class="cursor-stuff ultralaser itemglow rounded-circle cannotPurchase"
                     style="width: 4rem"
                   />
 
@@ -611,7 +617,7 @@
                   <small class="me-4">Call For Help <small class="text-danger">5Max</small></small>
                 <small class="">Make A Deal <small class="text-danger">1Max</small></small>
                </div>
-                <div id="special1" class="col-md-3 mt-1 rounded pb-1 ms-2 me-1 gunbg d-flex justify-content-center border border-5 border-dark">
+                <div id="special1" class="col-md-3 mt-1 rounded pb-1 ms-2 me-1 gunbg d-flex justify-content-center border border-5 border-dark cannotPurchase">
                   <div class="d-flex justify-content-center">
                     <img 
                     onclick="specialGun('specialGun')"
@@ -620,7 +626,7 @@
                   
                 </div>
                 <!-- ---------SECTION CALL FOR HELP------- -->
-                <div id="special2" class="col-md-3 mt-1 me-5 ms-5 rounded pb-1 alienhelp  d-flex justify-content-center  border border-5 border-dark">
+                <div id="special2" class="col-md-3 mt-1 me-5 ms-5 rounded pb-1 alienhelp  d-flex justify-content-center  border border-5 border-dark cannotPurchase">
                   <div class="d-flex justify-content-center">
                     <img 
                     onclick="callForHelp('callForHelp')"
@@ -631,7 +637,7 @@
               
                 <!-- --------SECTION MAKE A DEAL----------------- -->
 
-                <div id="special3" class="col-md-3 mt-1 mx-1 rounded pb-1 makeadeal   d-flex justify-content-center  border border-5 border-dark">
+                <div id="special3" class="col-md-3 mt-1 mx-1 rounded pb-1 makeadeal   d-flex justify-content-center  border border-5 border-dark cannotPurchase">
                   <div class="d-flex justify-content-center">
                     <img 
                     onclick="makeADeal('makeADeal')"
