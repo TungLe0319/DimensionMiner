@@ -4,7 +4,6 @@ let clickUpgrades = [
   { name: 'ultrapickaxe', price: 5000, quantity: 0, multiplier: 20 },
   { name: 'makeADeal', price: 1, quantity: 0, multiplier: 2000 },
 ];
-let storageClickUpgrades = [];
 
 let automaticUpgrades = [
   { name: 'laser', price: 100, quantity: 0, multiplier: 25 },
@@ -13,6 +12,9 @@ let automaticUpgrades = [
   { name: 'specialGun', price: 10000, quantity: 0, multiplier: 1000 },
   { name: 'callForHelp', price: 5000, quantity: 0, multiplier: 500 },
 ];
+
+// --------------------------------------------------------------
+
 // -----------ToolTip-----------------------------------------------
 const tooltipTriggerList = document.querySelectorAll(
   '[data-bs-toggle="tooltip"]'
@@ -89,6 +91,17 @@ let timerSeconds = 3;
 const audio = new Audio();
 audio.src = './resources/ClickSound.wav';
 
+// -----------------------------------------------------------
+function getStarted() {
+  let beginning = document.getElementById('welcomeCard');
+  let game = document.getElementById('game');
+  beginning.classList.add('visually-hidden');
+  game.classList.add('fade-in');
+  game.classList.remove('visually-hidden');
+  badgeTemplate()
+}
+// ------------------------------------------------------------------
+
 function mine() {
   orbs += clickCountBonus;
   totalOrbsOverTime += clickCountBonus;
@@ -111,67 +124,67 @@ function unhide() {
   let ultraLaserIcon = document.getElementById('ultraLaserIcon');
   if (orbs >= pickaxe.price) {
     pickIcon1.classList.remove('cannotPurchase');
-    pickIcon1.classList.add('bounce')
+    pickIcon1.classList.add('bounce');
   } else {
     pickIcon1.classList.add('cannotPurchase');
-    pickIcon1.classList.remove('bounce')
+    pickIcon1.classList.remove('bounce');
   }
   if (orbs >= megaPickAxe.price) {
     megaPickIcon.classList.remove('cannotPurchase');
-  megaPickIcon.classList.add('bounce')
+    megaPickIcon.classList.add('bounce');
   } else {
     megaPickIcon.classList.add('cannotPurchase');
-    megaPickIcon.classList.remove('bounce')
+    megaPickIcon.classList.remove('bounce');
   }
 
   if (orbs >= ultraPickAxe.price) {
     ultraPickIcon.classList.remove('cannotPurchase');
-    ultraPickIcon.classList.add('bounce')
+    ultraPickIcon.classList.add('bounce');
   } else {
     ultraPickIcon.classList.add('cannotPurchase');
-    ultraPickIcon.classList.remove('bounce')
+    ultraPickIcon.classList.remove('bounce');
   }
   if (orbs >= atomGun.price) {
     specialGunID.classList.remove('cannotPurchase');
-    specialGunID.classList.add('bounce')
+    specialGunID.classList.add('bounce');
   } else {
     specialGunID.classList.add('cannotPurchase');
-    specialGunID.classList.remove('bounce')
+    specialGunID.classList.remove('bounce');
   }
   if (orbs >= callForHelpz.price) {
     callForHelpID.classList.remove('cannotPurchase');
-    callForHelpID.classList.add('bounce')
+    callForHelpID.classList.add('bounce');
   } else {
     callForHelpID.classList.add('cannotPurchase');
-    callForHelpID.classList.remove('bounce')
+    callForHelpID.classList.remove('bounce');
   }
   if (orbs >= sellYourSoul.price) {
     makeADealID.classList.remove('cannotPurchase');
-    makeADealID.classList.add('bounce')
+    makeADealID.classList.add('bounce');
   } else {
     makeADealID.classList.add('cannotPurchase');
-    makeADealID.classList.remove('bounce')
+    makeADealID.classList.remove('bounce');
   }
   if (orbs >= laser.price) {
     laserIcon.classList.remove('cannotPurchase');
-    laserIcon.classList.remove('bounce')
+    laserIcon.classList.remove('bounce');
   } else {
     laserIcon.classList.add('cannotPurchase');
-    laserIcon.classList.remove('bounce')
+    laserIcon.classList.remove('bounce');
   }
   if (orbs >= megaLaser.price) {
     megaLaserIcon.classList.remove('cannotPurchase');
-    megaLaserIcon.classList.add('bounce')
+    megaLaserIcon.classList.add('bounce');
   } else {
     megaLaserIcon.classList.add('cannotPurchase');
-    megaLaserIcon.classList.remove('bounce')
+    megaLaserIcon.classList.remove('bounce');
   }
   if (orbs >= ultraLaser.price) {
     ultraLaserIcon.classList.remove('cannotPurchase');
-    ultraLaserIcon.classList.add('bounce')
+    ultraLaserIcon.classList.add('bounce');
   } else {
     ultraLaserIcon.classList.add('cannotPurchase');
-    ultraLaserIcon.classList.remove('bounce')
+    ultraLaserIcon.classList.remove('bounce');
   }
 }
 
@@ -208,9 +221,9 @@ function drawCounts() {
   totalOrbsDOM.innerText = totalOrbsOverTime;
   badgeReveal();
   changeImage();
-  save();
+  // save();
 }
-
+// ----------------Saving and Load to local Storage
 function save() {
   window.localStorage.setItem('Orbs', orbs);
   window.localStorage.setItem('totalOrbsOverTime', totalOrbsOverTime);
@@ -258,7 +271,7 @@ function loadProfile() {
   //  automaticUpgrades = aUpgradesData
   // }
 }
-
+// ----------------------------------------------
 // ----Click Upgrade
 function upgrade(name) {
   let picks = clickUpgrades.find((upgrade) => upgrade.name == name);
@@ -296,10 +309,11 @@ function specialGun(name) {
   let gunThingy = document.getElementById('gunBeam');
   let gunGun = document.getElementById('gunGun');
   clearInterval(collectAutoUpgrades);
-
+   specialGunID.classList.add('cannotPurchase')
   if (specialGun.quantity >= 1) {
     specialGun.price = 0;
     specialGun.multiplier = 0;
+ 
   }
   if (orbs > specialGun.price) {
     orbs -= specialGun.price;
@@ -318,10 +332,11 @@ function specialGun(name) {
 function callForHelp(name) {
   let callForHelp = automaticUpgrades.find((help) => help.name == name);
   let callForHelpBadge = document.getElementById('callForHelpBadge');
-
+  
   if (callForHelp.quantity >= 5) {
     callForHelp.multiplier = 0;
     callForHelp.price = 0;
+  callForHelpID.classList.add('cannotPurchase')
   }
   if (orbs > callForHelp.price) {
     orbs -= callForHelp.price;
@@ -338,10 +353,11 @@ function callForHelp(name) {
 function makeADeal(name) {
   let makeADeal = clickUpgrades.find((deal) => deal.name == name);
   let makeADealBadge = document.getElementById('makeADealBadge');
-
+ makeADealID.classList.add('cannotPurchase')
   if (makeADeal.quantity >= 1) {
     makeADeal.multiplier = 0;
     makeADeal.price = 0;
+   
   }
   if (orbs > makeADeal.price) {
     orbs -= makeADeal.price;
@@ -428,13 +444,7 @@ function addLaser() {
 
 // --------------------------------------------------------------------------------
 
-// let possibleBosses= ['https://media1.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.gif?cid=ecf05e47k15dvss3xmpuj6gftxjj4i9peyuhmidcpvhldp4p&rid=giphy.gif&ct=g',
-// 'https://media2.giphy.com/media/5Rg9bh6LyLKuY/giphy.gif?cid=ecf05e47snlxpgkpnyqzzetx78hx1ljx472ox5d2x2epjp12&rid=giphy.gif&ct=g',
-// 'https://media1.giphy.com/media/l1KVbbEBi4keD6jlu/giphy.gif?cid=ecf05e47murua58yw20e67n8axnunobbbro5giwymznom9xk&rid=giphy.gif&ct=g',
-// 'https://media0.giphy.com/media/l41m5M6KnkGywFyXS/giphy.gif?cid=ecf05e479ue6rlb6iek04tiz66kb7w8i8i2xqipwxbbtsozp&rid=giphy.gif&ct=g',
-// 'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp', 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp', 'https://media4.giphy.com/media/QVUgDYLg7ezR5mBtv0/giphy.gif?cid=ecf05e47adqrbr4mkib6tghaxyclcjaqpcvtwqk45dxu8qqi&rid=giphy.gif&ct=g',
-// 'https://media0.giphy.com/media/s5arkl7ICEsyMsyUXA/giphy.gif?cid=ecf05e47jxg38zp7ug8oucls6ap26h4uyuv4bqlqxa0z4vf6&rid=giphy.gif&ct=g',
-// 'https://media2.giphy.com/media/8UI85273lC1VzEgkyW/giphy.gif?cid=ecf05e47drca92pkxoxzmwd718zeljpc2z9ocn2fc8c9x4kt&rid=giphy.gif&ct=g' ]
+
 function changeImage() {
   if (orbs >= 10) {
     atomOrbDOM.src = 'https://i.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.webp';
@@ -495,39 +505,197 @@ function changeImage() {
 }
 
 // -----------------------------------------------------------------------
+// const badges = [
+//   {
+//     name: 'ghostBadge',
+//     title: "Badge:IDK, It's a Ghibili Icon",
+//     src: './resources/ghost.png',
+    
+//   },
+//   {
+//     name: 'badge1',
+//     title: 'Badge: beat phase-1',
+//     src: './resources/AlienMedal4.png',
+//   },
+//   {
+//     name: 'badge2',
+//     title: 'Badge: beat phase-1',
+//     src: './resources/AlienMedal2.png',
+//   },
+//   {
+//     name: 'badge3',
+//     title: 'Badge: beat phase-1',
+//     src: './resources/AlienMedal3.png',
+//   },
+//   {
+//     name: 'badge4',
+//     title: 'Badge: beat phase-1',
+//     src: './resources/AlienMedal1.png',
+//   },
+//   {
+//     name: 'pickBadge',
+//     title: 'Badge: beat phase-1',
+//     src: './resources/pickaxebadge.png',
+//   },
+//   {
+//     name: 'laserBadge',
+//     title: 'Badge: beat phase-1',
+//     src: './resources/laser.png',
+//   },
+//   {
+//     name: 'specialGunBadge',
+//     title: 'Badge: beat phase-1',
+//     src: 'https://i.giphy.com/media/L2UHsn6f4Vmw4Dt8p3/giphy.webp',
+//   },
+//   {
+//     name: 'callForHelpBadge',
+//     title: 'Badge: beat phase-1',
+//     src: './resources/Alien1.png',
+//   },
+//   {
+//     name: 'makeADealBadge',
+//     title: 'Badge: beat phase-1',
+//     src: 'https://media1.giphy.com/media/GE5LUTVEdH5LrvIppa/giphy.gif',
+//   },
+
+//   // ------------------------------BOSSES-----------------------------------------------
+//   {
+//     name: 'boss1',
+//     title: 'Badge: beat phase-1',
+//     src: 'https://i.giphy.com/media/5Rg9bh6LyLKuY/giphy.webp',
+//   },
+//   {
+//     name: 'boss2',
+//     title: 'Badge: beat phase-2',
+//     src: 'https://media3.giphy.com/media/GLIjqI7Q7aha81olc5/giphy.gif?cid=790b7611db710ec442cc6c216c9a31585ab6b66bc47fea5e&rid=giphy.gif&ct=g',
+//   },
+//   {
+//     name: 'boss3',
+//     title: 'Badge: beat phase-3',
+//     src: 'https://i.giphy.com/media/otzvbOMu2qSVMOoTTX/giphy.webp',
+//   },
+//   {
+//     name: 'boss4',
+//     title: 'Badge: beat phase-4',
+//     src: 'https://i.giphy.com/media/hq64aPc8ExJpiXgRtR/giphy.webp',
+//   },
+//   {
+//     name: 'boss5',
+//     title: 'Badge: beat phase-5',
+//     src: 'https://i.giphy.com/media/s5arkl7ICEsyMsyUXA/giphy.webp',
+//   },
+//   {
+//     name: 'boss6',
+//     title: 'Badge: beat phase-6',
+//     src: 'https://i.giphy.com/media/fjxtT75gj7LrN3AHT3/giphy.webp',
+//   },
+//   {
+//     name: 'boss7',
+//     title: 'Badge:',
+//     src: 'https://i.giphy.com/media/kAQmvq1JXvca8fdGf4/giphy.webp',
+//   },
+//   {
+//     name: 'theGirl',
+//     title: 'Badge:Liberator, freed the girl from her prison.',
+//     src: 'https://i.giphy.com/media/3PUzAcNsqoaDjXW3Pn/giphy.webp',
+//   },
+// ];
+// ----------------------------------------------------------------------------
+// Tried doing template for badges, it worked but ultimatley when they come onto the page the tool-top doesn't show up.
+
+// function badgeTemplate() {
+//   let spot = document.getElementById('badgeSpot');
+//   let template = '';
+//   badges.forEach((badge) => {
+//     template += `<span
+//   id="${badge.name}" class="visually-hidden "><img
+//    src="${badge.src}"
+//    class=" heart rounded-circle shadow-filter  "
+//    style="width: 3rem"
+//    data-bs-toggle="tooltip" data-bs-placement="bottom"
+//    data-bs-title="${badge.title}"/>
+// </span>`;
+//   });
+//   spot.innerHTML += template;
+// }
+// -----------------------------------------------------------------------------
+
 function badgeReveal() {
   let badge1 = document.getElementById('badge1');
   let badge2 = document.getElementById('badge2');
   let badge3 = document.getElementById('badge3');
   let badge4 = document.getElementById('badge4');
-  let pickBadge = document.getElementById('badge5');
-  let laserBadge = document.getElementById('badge6');
+  let pickBadge = document.getElementById('pickBadge');
+  let laserBadge = document.getElementById('laserBadge');
   let ghostBadge = document.getElementById('ghostBadge');
- if (orbs>=10) {
-  badge1.classList.remove('visually-hidden')
-  badge1.classList.add('bounce')
- }
- if (orbs>=10) {
-  badge2.classList.remove('visually-hidden')
-  badge2.classList.add('bounce')
- }
- if (orbs >=10) {
-  badge3.classList.remove('visually-hidden')
-  badge3.classList.add('bounce')
- }
- if (orbs >=10) {
-  badge4.classList.remove('visually-hidden')
-  badge4.classList.add('bounce')
- }
-
+  let boss1 = document.getElementById('boss1');
+  let boss2 = document.getElementById('boss2');
+  let boss3 = document.getElementById('boss3');
+  let boss4 = document.getElementById('boss4');
+  let boss5 = document.getElementById('boss5');
+  let boss6 = document.getElementById('boss6');
+  let boss7 = document.getElementById('boss7');
+  let theGirl = document.getElementById('theGirl');
+  if (orbs >= 100) {
+    badge1.classList.remove('visually-hidden');
+    badge1.classList.add('bounce');
+  }
+  if (orbs >= 200) {
+    badge2.classList.remove('visually-hidden');
+    badge2.classList.add('bounce');
+  }
+  if (orbs >= 500) {
+    badge3.classList.remove('visually-hidden');
+    badge3.classList.add('bounce');
+  }
+  if (orbs >= 108) {
+    badge4.classList.remove('visually-hidden');
+    badge4.classList.add('bounce');
+  }
   if (clickCountBonus >= 10) {
-    pickBadge.classList.remove('visually-hidden')
-    pickBadge.classList.add('bounce')
+    pickBadge.classList.remove('visually-hidden');
+    pickBadge.classList.add('bounce');
   }
 
   if (laserCountBonus >= 10) {
-    laserBadge.classList.remove('visually-hidden')
-    laserBadge.classList.add('bounce')
+    laserBadge.classList.remove('visually-hidden');
+    laserBadge.classList.add('bounce');
+  }
+  if (orbs >= 100) {
+    boss1.classList.remove('visually-hidden');
+    boss1.classList.add('bounce');
+  }
+  if (orbs >= 100) {
+    boss2.classList.remove('visually-hidden');
+    boss2.classList.add('bounce');
+  }
+  if (orbs >= 100) {
+    boss3.classList.remove('visually-hidden');
+    boss3.classList.add('bounce');
+  }
+  if (orbs >= 100) {
+    boss4.classList.remove('visually-hidden');
+    boss4.classList.add('bounce');
+  }
+  if (orbs >= 100) {
+    boss5.classList.remove('visually-hidden');
+    boss5.classList.add('bounce');
+  }
+  if (orbs >= 100) {
+    boss6.classList.remove('visually-hidden');
+    boss6.classList.add('bounce');
+  }
+  if (orbs >= 100) {
+    boss7.classList.remove('visually-hidden');
+    boss7.classList.add('bounce');
+  }
+  if (orbs >= 100) {
+    theGirl.classList.remove('visually-hidden');
+    theGirl.classList.add('bounce');
+  }
+  if (orbs >= 100) {
+    ghostBadge.classList.remove('visually-hidden');
+    ghostBadge.classList.add('bounce');
   }
 }
 

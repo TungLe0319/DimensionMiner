@@ -67,20 +67,20 @@
    
 <!-- --------------------------------------------- -->
  <!-- SECTION I WANT TO HIDE -->
- <section class="welcome-card container-fluid  bg-dark  ">
-  <div class="row  pt-5 mt-5 ps-5 ms-5">
-    <div class="col-md-4 d-flex">
+ <section id="welcomeCard" class="welcome-card container-fluid visually-hidden bg-dark  ">
+  <div class="row  pt-5 ps-5 ms-5">
+    <div class="col-md-4 d-flex mt-5 pt-5">
       <img src="https://i.giphy.com/media/3oEjHNf3ApVJpDp9vi/giphy.webp" alt="" srcset="" class="rounded-circle border border-3 border-dark" style="width: 20rem;">
     </div>
-    <div class="col-md-6 d-flex">
-      <marquee behavior="scroll" direction="up" scrollamount="5"><h1 class="text-light">Please... traveler... help me from them... <br>
-      hit the unknown one and collect the orbs and free me from their prison.. only you...</them></h1></marquee>
+    <div class="col-md-6 d-flex mt-5 pt-5">
+      <marquee behavior="scroll" direction="up" scrollamount="5"><h1 class="text-light">Please... get me out of here... 
+      hit the Interdimensional Portal and collect the orbs and free me from their prison...</them></h1></marquee>
     </div>
-    <div class="col-md-12 d-flex justify-content-center mt-5">
+    <div class="col-md-12 d-flex justify-content-center mt-5 pt-5">
       
       <img
-      id=""
-      onclick=""
+      id="begin"
+      onclick="getStarted()"
       src="https://media3.giphy.com/media/3ohs4CacylzFaHjMM8/giphy.gif?cid=ecf05e471p62dp2o4eni61n3sxvbw17q73lcowyt3f9lbo2p&rid=giphy.gif&ct=g"
       alt="Insulated"
       class="img-fluid rounded-circle heart test orb-glow cursor-stuff glowing-circle bounce "
@@ -92,13 +92,13 @@
 <!-- ---------------------------------------------- -->
 
 
-    <main class="">
+    <main id="game" class="">
 
 
              <!-- SECTION BADGES -->
-         <div class="section container-fluid bounce ">
+         <div class="section container-fluid  ">
           <div class="row">
-            <div class="col-md-12 mt-3 ms-3">
+            <div id="badgeSpot" class="col-md-12 mt-3 ms-3">
               <span
               id="badge1" class="visually-hidden "><img
                src="./resources/AlienMedal4.png"
@@ -107,7 +107,7 @@
                data-bs-toggle="tooltip" data-bs-placement="bottom"
                data-bs-title="Badge: 1k Orbs Collected && Defeated 1st Boss"/>
             </span>
-            <!-- ----------------- -->
+         
             <span
             id="badge2" class="visually-hidden"><img
              src="./resources/AlienMedal2.png"
@@ -116,7 +116,7 @@
              data-bs-toggle="tooltip" data-bs-placement="bottom"
              data-bs-title="Badge: 5k Orbs Collected && Defeated 2nd Boss"/>
           </span>
-          <!-- -------------------------- -->
+        
           <span
           id="badge3" class="visually-hidden"><img
            src="./resources/AlienMedal3.png"
@@ -136,7 +136,7 @@
       </span>
       <!-- ------------------------- -->
       <span
-      id="badge5" class="visually-hidden"><img
+      id="pickBadge" class="visually-hidden"><img
        src="./resources/pickaxebadge.png"
        class=" heart rounded-circle shadow-filter "
        style="width: 3rem"
@@ -145,7 +145,7 @@
     </span>
     <!-- ------------- -->
     <span
-    id="badge6" class="visually-hidden"><img
+    id="laserBadge" class="visually-hidden"><img
      src="./resources/laser.png"
      class=" heart rounded-circle shadow-filter "
      style="width: 3rem"
@@ -180,6 +180,74 @@
    data-bs-title="Badge: Traded Part Of Your Soul"/>
 </span>
   <!-- --------------------------------------------------------- -->
+  <span
+  id="boss1" class="visually-hidden"><img
+   src="https://i.giphy.com/media/5Rg9bh6LyLKuY/giphy.webp"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge: Traded Part Of Your Soul"/>
+</span>
+<span
+  id="boss2" class="visually-hidden"><img
+   src="https://media3.giphy.com/media/GLIjqI7Q7aha81olc5/giphy.gif?cid=790b7611db710ec442cc6c216c9a31585ab6b66bc47fea5e&rid=giphy.gif&ct=g"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge: Traded Part Of Your Soul"/>
+</span>
+<span
+  id="boss3" class="visually-hidden"><img
+   src="https://i.giphy.com/media/otzvbOMu2qSVMOoTTX/giphy.webp"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge: Traded Part Of Your Soul"/>
+</span>
+
+<span
+  id="boss4" class="visually-hidden"><img
+   src="https://i.giphy.com/media/hq64aPc8ExJpiXgRtR/giphy.webp"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge: Traded Part Of Your Soul"/>
+</span>
+<span
+  id="boss5" class="visually-hidden"><img
+   src="https://i.giphy.com/media/s5arkl7ICEsyMsyUXA/giphy.webp"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge: Traded Part Of Your Soul"/>
+</span>
+<span
+  id="boss6" class="visually-hidden"><img
+   src="https://i.giphy.com/media/fjxtT75gj7LrN3AHT3/giphy.webp"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge: Traded Part Of Your Soul"/>
+</span>
+<span
+  id="boss7" class="visually-hidden"><img
+   src="https://i.giphy.com/media/kAQmvq1JXvca8fdGf4/giphy.webp"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge: Traded Part Of Your Soul"/>
+</span>
+<span
+  id="theGirl" class="visually-hidden"><img
+   src="https://i.giphy.com/media/3PUzAcNsqoaDjXW3Pn/giphy.webp"
+   class=" heart rounded-circle shadow-filter "
+   style="width: 3rem"
+   data-bs-toggle="tooltip" data-bs-placement="bottom"
+   data-bs-title="Badge: Traded Part Of Your Soul"/>
+</span>
+  <!----------------------------->
+  
+  <!-- ----------------------------------------------------------- -->
 
             </div>
           </div>
