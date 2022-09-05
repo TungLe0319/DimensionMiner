@@ -64,40 +64,45 @@
         </div>
       </div>
     </header>
-    <!-- SECTION I WANT TO HIDE -->
-    <section class="welcome-card container-fluid  bg-dark  visually-hidden ">
-      <div class="row  pt-5 mt-5 ps-5 ms-5">
-        <div class="col-md-4 d-flex">
-          <img src="https://i.giphy.com/media/3oEjHNf3ApVJpDp9vi/giphy.webp" alt="" srcset="" class="rounded-circle" style="width: 20rem;">
-        </div>
-        <div class="col-md-6 d-flex">
-          <marquee behavior="scroll" direction="up" scrollamount="5"><h1 class="text-light">Please... traveler... help me from them... <br>
-          hit the unknown one and collect the orbs and free me from their prison.. only you...</them></h1></marquee>
-        </div>
-        <div class="col-md-12 d-flex justify-content-center mt-5">
-          
-          <img
-          id=""
-          onclick=""
-          src="https://media3.giphy.com/media/3ohs4CacylzFaHjMM8/giphy.gif?cid=ecf05e471p62dp2o4eni61n3sxvbw17q73lcowyt3f9lbo2p&rid=giphy.gif&ct=g"
-          alt="Insulated"
-          class="img-fluid rounded-circle heart test orb-glow cursor-stuff glowing-circle "
-        />
-       
+   
+<!-- --------------------------------------------- -->
+ <!-- SECTION I WANT TO HIDE -->
+ <section class="welcome-card container-fluid  bg-dark  ">
+  <div class="row  pt-5 mt-5 ps-5 ms-5">
+    <div class="col-md-4 d-flex">
+      <img src="https://i.giphy.com/media/3oEjHNf3ApVJpDp9vi/giphy.webp" alt="" srcset="" class="rounded-circle border border-3 border-dark" style="width: 20rem;">
+    </div>
+    <div class="col-md-6 d-flex">
+      <marquee behavior="scroll" direction="up" scrollamount="5"><h1 class="text-light">Please... traveler... help me from them... <br>
+      hit the unknown one and collect the orbs and free me from their prison.. only you...</them></h1></marquee>
+    </div>
+    <div class="col-md-12 d-flex justify-content-center mt-5">
       
-        </div>
-      </div></section>
+      <img
+      id=""
+      onclick=""
+      src="https://media3.giphy.com/media/3ohs4CacylzFaHjMM8/giphy.gif?cid=ecf05e471p62dp2o4eni61n3sxvbw17q73lcowyt3f9lbo2p&rid=giphy.gif&ct=g"
+      alt="Insulated"
+      class="img-fluid rounded-circle heart test orb-glow cursor-stuff glowing-circle bounce "
+    />
+   
+  
+    </div>
+  </div></section>
+<!-- ---------------------------------------------- -->
+
+
     <main class="">
 
 
              <!-- SECTION BADGES -->
-         <div class="section container-fluid ">
+         <div class="section container-fluid bounce ">
           <div class="row">
             <div class="col-md-12 mt-3 ms-3">
               <span
               id="badge1" class="visually-hidden "><img
                src="./resources/AlienMedal4.png"
-               class=" heart rounded-circle shadow-filter "
+               class=" heart rounded-circle shadow-filter  "
                style="width: 3rem"
                data-bs-toggle="tooltip" data-bs-placement="bottom"
                data-bs-title="Badge: 1k Orbs Collected && Defeated 1st Boss"/>
@@ -178,7 +183,7 @@
 
             </div>
           </div>
-          <div class="row">
+          <div class="row ">
             <!-- SECTION COLLECTED OVER ALL TIME -->
             <div class="col-md-12">
               <small>
@@ -194,12 +199,12 @@
    
 
       <!-- MAIN SECTION -->
-      <section class="container pt-3">
+      <section class="container pt-3 bounce">
         <div class="row justify-content-evenly">
           <div
             id="cookie"
             onclick="mine()"
-            class="orb col-md-3 d-flex justify-content-center Float heart"
+            class="orb col-md-3 d-flex justify-content-center heart "
           >
             <!-- GIF IMAGE HERE -->
          <img
@@ -207,7 +212,7 @@
               onclick=""
               src="https://64.media.tumblr.com/08e067f324fe4667c381990355329c97/tumblr_n5u9j9NycV1rf78nfo1_400.gifv"
               alt="Insulated"
-              class="img-fluid rounded-circle heart test orb-glow opacity-75 glowing-circle "
+              class="img-fluid rounded-circle heart test orb-glow opacity-75 glowing-circle  "
             />
            
           
@@ -218,7 +223,7 @@
         </div>
       </section>
       <!-- SECTION MARQUEE LAZER AND ATOM GUN -->
-      <section class="container-fluid alienandlaser">
+      <section class="container-fluid alienandlaser bounce">
         <div class="row">
           <div class="col-md-12 d-flex justify-content-center">
             <img
@@ -267,7 +272,7 @@
 
       <!-- ---------- -->
       <!-- SECTION click Count and automatic Click Count -->
-      <section class="container-fluid justify-content-center menubar">
+      <section class="container-fluid justify-content-center menubar bounce">
       
         <div class="row justify-content-center">
           <!-- STUB clickcount-bonus -->
@@ -314,7 +319,7 @@
               <img
                 src="./resources/hourglass.png"
                 alt=""
-                class="mt-3"
+                class="mt-3 "
                 style="width: 2rem"
               />
               <span id="timer" class="text-warning">3</span>
@@ -328,7 +333,7 @@
       </section>
 
       <!-- NOTE  UPGRADES -->
-      <section class="container-fluid">
+      <section class="container-fluid bounce">
         <div class="row pb-5 justify-content-center">
        
           <!-- SECTION CLICK UPGRADES -->
@@ -453,7 +458,8 @@
                   />
                   <small>x</small>
                   <span id="laser-cost" class="text-info">0</span>
-                  <span class="ms-2"><small class="cb">+25 / 3s</small> </span
+                  <span class="ms-2"><small class="cb">+25 
+                    | 1sec</small> </span
                   ><br />
                   <!-- -------------------- -->
                   <!-- autoupgradetwo -->
@@ -475,8 +481,10 @@
                   />
                   <small>x</small>
                   <span id="megalaser-cost" class="text-info">0</span>
-                  <span class="ms-2"><small class="cb">+75 / 3s</small> </span
-                  ><br />
+                  <span class="ms-2"><small class="cb">+75 |</small> </span
+                    
+                  >
+                  <span class=""><img src="./resources/clock.png" alt="" style="width: 1rem;color: wheat;" ></span><br />
                   <!-- ---------------- -->
                   <!-- autoupgrade3 -->
                   <img
@@ -496,7 +504,7 @@
                   />
                   <small>x</small>
                   <span id="ultralaser-cost" class="text-info">0</span>
-                  <span class="ms-2"><small class="cb">+100 / 3s</small> </span
+                  <span class="ms-2"><small class="cb">+100 | 1sec</small> </span
                   ><br />
                   <!-- --------------------------- -->
                 </div>
@@ -612,7 +620,7 @@
                 </div>
                 <!-- --------------------- -->
                 <!-- SECTION SPECIAL GUN -->
-                <div class="my-1 rounded bg-dark d-flex ">
+                <div class="my-1 rounded bg-dark d-flex justify-content-between">
                   <small class="  me-5">Broken Gun <small class="text-danger">1Max</small></small>
                   <small class="me-4">Call For Help <small class="text-danger">5Max</small></small>
                 <small class="">Make A Deal <small class="text-danger">1Max</small></small>
@@ -620,6 +628,7 @@
                 <div id="special1" class="col-md-3 mt-1 rounded pb-1 ms-2 me-1 gunbg d-flex justify-content-center border border-5 border-dark cannotPurchase">
                   <div class="d-flex justify-content-center">
                     <img 
+                    
                     onclick="specialGun('specialGun')"
                     src="https://i.giphy.com/media/L2UHsn6f4Vmw4Dt8p3/giphy.webp" alt=""  class="cursor-stuff rotate  shadow-filter " style="width: 5rem;">
                   </div>
@@ -648,8 +657,8 @@
 
                 <!-- ----------------------------------------- -->
                 <div class="my-1 rounded bg-dark d-flex justify-content-around ">
-                  <small class="  me-5"> <small class="cb">+1000/3s</small></small>
-                  <small class="mx-1"><small class="cb">+500/3s</small></small>
+                  <small class="  me-5"> <small class="cb">+1000/1sec</small></small>
+                  <small class="mx-1"><small class="cb">+500/1sec</small></small>
                 <small class="ms-5"><small class="cb">+1000<i class="mdi mdi-cursor-default-click"></i
                   ></small></small>
                </div>

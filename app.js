@@ -111,49 +111,67 @@ function unhide() {
   let ultraLaserIcon = document.getElementById('ultraLaserIcon');
   if (orbs >= pickaxe.price) {
     pickIcon1.classList.remove('cannotPurchase');
+    pickIcon1.classList.add('bounce')
   } else {
     pickIcon1.classList.add('cannotPurchase');
+    pickIcon1.classList.remove('bounce')
   }
   if (orbs >= megaPickAxe.price) {
     megaPickIcon.classList.remove('cannotPurchase');
+  megaPickIcon.classList.add('bounce')
   } else {
     megaPickIcon.classList.add('cannotPurchase');
+    megaPickIcon.classList.remove('bounce')
   }
 
   if (orbs >= ultraPickAxe.price) {
     ultraPickIcon.classList.remove('cannotPurchase');
+    ultraPickIcon.classList.add('bounce')
   } else {
     ultraPickIcon.classList.add('cannotPurchase');
+    ultraPickIcon.classList.remove('bounce')
   }
   if (orbs >= atomGun.price) {
     specialGunID.classList.remove('cannotPurchase');
+    specialGunID.classList.add('bounce')
   } else {
     specialGunID.classList.add('cannotPurchase');
+    specialGunID.classList.remove('bounce')
   }
   if (orbs >= callForHelpz.price) {
     callForHelpID.classList.remove('cannotPurchase');
+    callForHelpID.classList.add('bounce')
   } else {
     callForHelpID.classList.add('cannotPurchase');
+    callForHelpID.classList.remove('bounce')
   }
   if (orbs >= sellYourSoul.price) {
     makeADealID.classList.remove('cannotPurchase');
+    makeADealID.classList.add('bounce')
   } else {
     makeADealID.classList.add('cannotPurchase');
+    makeADealID.classList.remove('bounce')
   }
   if (orbs >= laser.price) {
     laserIcon.classList.remove('cannotPurchase');
+    laserIcon.classList.remove('bounce')
   } else {
     laserIcon.classList.add('cannotPurchase');
+    laserIcon.classList.remove('bounce')
   }
   if (orbs >= megaLaser.price) {
     megaLaserIcon.classList.remove('cannotPurchase');
+    megaLaserIcon.classList.add('bounce')
   } else {
     megaLaserIcon.classList.add('cannotPurchase');
+    megaLaserIcon.classList.remove('bounce')
   }
   if (orbs >= ultraLaser.price) {
     ultraLaserIcon.classList.remove('cannotPurchase');
+    ultraLaserIcon.classList.add('bounce')
   } else {
     ultraLaserIcon.classList.add('cannotPurchase');
+    ultraLaserIcon.classList.remove('bounce')
   }
 }
 
@@ -484,34 +502,36 @@ function badgeReveal() {
   let badge4 = document.getElementById('badge4');
   let pickBadge = document.getElementById('badge5');
   let laserBadge = document.getElementById('badge6');
-  switch (orbs) {
-    case 10:
-      badge1.className -= 'visually-hidden';
-      break;
-    case 20:
-      badge2.className -= 'visually-hidden';
-      break;
-    case 30:
-      badge3.className -= 'visually-hidden';
-      break;
-    case 25:
-      badge4.className -= 'visually-hidden';
-      break;
+  let ghostBadge = document.getElementById('ghostBadge');
+ if (orbs>=10) {
+  badge1.classList.remove('visually-hidden')
+  badge1.classList.add('bounce')
+ }
+ if (orbs>=10) {
+  badge2.classList.remove('visually-hidden')
+  badge2.classList.add('bounce')
+ }
+ if (orbs >=10) {
+  badge3.classList.remove('visually-hidden')
+  badge3.classList.add('bounce')
+ }
+ if (orbs >=10) {
+  badge4.classList.remove('visually-hidden')
+  badge4.classList.add('bounce')
+ }
 
-    default:
-      break;
+  if (clickCountBonus >= 10) {
+    pickBadge.classList.remove('visually-hidden')
+    pickBadge.classList.add('bounce')
   }
 
-  if (clickCountBonus > 10) {
-    pickBadge.className -= 'visually-hidden';
-  }
-
-  if (laserCountBonus > 10) {
-    laserBadge.className -= ' visually-hidden';
+  if (laserCountBonus >= 10) {
+    laserBadge.classList.remove('visually-hidden')
+    laserBadge.classList.add('bounce')
   }
 }
 
-setInterval(collectAutoUpgrades, 3000);
+setInterval(collectAutoUpgrades, 1000);
 // setInterval(timer, 1000);
 
 drawCounts();
