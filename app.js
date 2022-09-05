@@ -82,7 +82,7 @@ let atomGun = automaticUpgrades.find(
 let sellYourSoul = clickUpgrades.find(
   (bananaWord) => bananaWord.name == 'makeADeal'
 );
-// let specialGunz = automaticUpgrades.find(pickle => pickle.name == 'specialGun')
+// -------------------------------------------------------------------------
 let specialGunID = document.getElementById('special1');
 let callForHelpID = document.getElementById('special2');
 let makeADealID = document.getElementById('special3');
@@ -90,6 +90,7 @@ let makeADealID = document.getElementById('special3');
 let timerSeconds = 3;
 const audio = new Audio();
 audio.src = './resources/ClickSound.wav';
+// ------------------------------------------------------
 
 // -----------------------------------------------------------
 function getStarted() {
@@ -107,13 +108,13 @@ function mine() {
   totalOrbsOverTime += clickCountBonus;
   audio.play();
 
-  // addLaser();
-  // addAlien();
+ 
   colorchange();
   unhide();
   drawCounts();
   changeImage();
 }
+// ---------------------------------------------------------------------
 
 function unhide() {
   let pickIcon1 = document.getElementById('pickaxeIcon');
@@ -221,7 +222,7 @@ function drawCounts() {
   totalOrbsDOM.innerText = totalOrbsOverTime;
   badgeReveal();
   changeImage();
-  // save();
+  save();
 }
 // ----------------Saving and Load to local Storage
 function save() {
@@ -243,7 +244,7 @@ function loadProfile() {
   let totalOrbData = JSON.parse(
     window.localStorage.getItem('totalOrbsOverTime')
   );
-  let cUpgradesData = JSON.parse(window.localStorage.getItem('ClickUpgrades'));
+  // let cUpgradesData = JSON.parse(window.localStorage.getItem('ClickUpgrades'));
   // let aUpgradesData=JSON.parse(window.localStorage.getItem('AutomaticUpgrades'))
   let clickCountBonusData = JSON.parse(
     window.localStorage.getItem('ClickCountBonus')
@@ -264,9 +265,9 @@ function loadProfile() {
   if (laserCountBonusData) {
     laserCountBonus = laserCountBonusData;
   }
-  if (cUpgradesData) {
-    storageClickUpgrades = cUpgradesData;
-  }
+  // if (cUpgradesData) {
+  //   storageClickUpgrades = cUpgradesData;
+  // }
   // if (aUpgradesData) {
   //  automaticUpgrades = aUpgradesData
   // }
@@ -280,7 +281,7 @@ function upgrade(name) {
     orbs -= picks.price;
     picks.quantity++;
     clickCountBonus += picks.multiplier;
-    picks.price += picks.quantity * 2;
+    picks.price += picks.quantity * 3;
   }
 
   drawCounts();
@@ -295,6 +296,7 @@ function autoUpgradesLaser(name) {
     laser.quantity++;
 
     laserCountBonus += laser.multiplier;
+    laser.pr += laser.quantity*3
   }
 
   drawCounts();
@@ -328,7 +330,7 @@ function specialGun(name) {
 }
 // ----------------------
 // -----------------------------
-// TODO FIX ONLY 2 aliens coming out
+
 function callForHelp(name) {
   let callForHelp = automaticUpgrades.find((help) => help.name == name);
   let callForHelpBadge = document.getElementById('callForHelpBadge');
@@ -373,24 +375,26 @@ function makeADeal(name) {
 
 // ------------------------------------------------
 function timing() {
-  timerSeconds--;
-}
-
-// -----------------------------------------
-
-function collectAutoUpgrades() {
-  let timerDOM = document.getElementById('timer');
-  totalOrbsOverTime += laserCountBonus;
-  orbs += laserCountBonus;
-  setTimeout(timing, 0);
+   let timerDOM = document.getElementById('timer'); 
+   timerSeconds--; 
   if (timerSeconds < 0) {
     timerSeconds = 3;
   }
   timerDOM.innerText = timerSeconds;
 
+}
+
+// -----------------------------------------
+
+function collectAutoUpgrades() {
+
+  totalOrbsOverTime += laserCountBonus;
+  orbs += laserCountBonus;
+  setTimeout(timing);
+ 
   drawCounts();
 }
-setInterval(collectAutoUpgrades, 3000);
+
 // -----------------------------------------------------------
 // function timer() {
 //   let timerDOM = document.getElementById('timer');
@@ -402,16 +406,16 @@ setInterval(collectAutoUpgrades, 3000);
 // }
 // ----------------------------------------------------
 
-// ------------------------------------------------
-function click(event) {
-  const template = document
-    .getElementByID('#floating-text-template')
-    .content.cloneNode(true);
-  const element = template.querySelector('cookie'); //replace class with yours
-  element.style.left = `${event.clientX}px`;
-  element.style.top = `${event.clientY}px`;
-  document.appendChild(element);
-}
+// --------Cool Cursor Animation I decided to leave out----------------------------------------
+// function click(event) {
+//   const template = document
+//     .getElementByID('#floating-text-template')
+//     .content.cloneNode(true);
+//   const element = template.querySelector('cookie'); //replace class with yours
+//   element.style.left = `${event.clientX}px`;
+//   element.style.top = `${event.clientY}px`;
+//   document.appendChild(element);
+// }
 
 // -----------------------------------------------------
 function colorchange() {
@@ -446,61 +450,61 @@ function addLaser() {
 
 
 function changeImage() {
-  if (orbs >= 10) {
+  if (orbs >= 1000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.webp';
+  
   }
-  if (orbs >= 20) {
+  if (orbs >= 2000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/5Rg9bh6LyLKuY/giphy.webp';
   }
-  if (orbs >= 30) {
+  if (orbs >= 4000) {
     atomOrbDOM.src =
       'https://media1.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.gif?cid=ecf05e47k15dvss3xmpuj6gftxjj4i9peyuhmidcpvhldp4p&rid=giphy.gif&ct=g';
   }
-  if (orbs >= 40) {
+  if (orbs >= 5000) {
     atomOrbDOM.src =
       'https://media3.giphy.com/media/GLIjqI7Q7aha81olc5/giphy.gif?cid=790b7611db710ec442cc6c216c9a31585ab6b66bc47fea5e&rid=giphy.gif&ct=g';
   }
-  if (orbs >= 50) {
+  if (orbs >= 7000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp';
   }
-  if (orbs >= 60) {
+  if (orbs >= 8000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/otzvbOMu2qSVMOoTTX/giphy.webp';
   }
-  if (orbs >= 70) {
+  if (orbs >= 12000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/l41m5M6KnkGywFyXS/giphy.webp';
   }
-  if (orbs >= 80) {
+  if (orbs >= 15000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/hq64aPc8ExJpiXgRtR/giphy.webp';
   }
-  if (orbs >= 90) {
+  if (orbs >= 25000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp';
   }
-  if (orbs >= 100) {
+  if (orbs >= 28000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/s5arkl7ICEsyMsyUXA/giphy.webp';
   }
-  if (orbs >= 110) {
+  if (orbs >= 40000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/fdS69MmVdRN5hE1Lv7/giphy.webp';
   }
-  if (orbs >= 120) {
+  if (orbs >= 45000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/fjxtT75gj7LrN3AHT3/giphy.webp';
   }
-  if (orbs >= 130) {
+  if (orbs >= 70000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/fjxtT75gj7LrN3AHT3/giphy.webp';
   }
-  if (orbs >= 140) {
+  if (orbs >= 100000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/7SKOwf1nD6j6XhfLMG/giphy.webp';
   }
-  if (orbs >= 150) {
+  if (orbs >= 150000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/kAQmvq1JXvca8fdGf4/giphy.webp';
   }
-  if (orbs >= 160) {
-    atomOrbDOM.src = 'https://i.giphy.com/media/kAQmvq1JXvca8fdGf4/giphy.webp';
-  }
-  if (orbs >= 170) {
+  
+  if (orbs >= 250000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/xaQGyMzdEoWoGBs0ow/giphy.webp';
   }
-  if (orbs >= 180) {
+  if (orbs >= 300000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/3PUzAcNsqoaDjXW3Pn/giphy.webp';
+   
   }
 }
 
@@ -636,28 +640,28 @@ function badgeReveal() {
   let boss6 = document.getElementById('boss6');
   let boss7 = document.getElementById('boss7');
   let theGirl = document.getElementById('theGirl');
-  if (orbs >= 100) {
+  if (orbs >= 10000) {
     badge1.classList.remove('visually-hidden');
     badge1.classList.add('bounce');
   }
-  if (orbs >= 200) {
+  if (orbs >= 20000) {
     badge2.classList.remove('visually-hidden');
     badge2.classList.add('bounce');
   }
-  if (orbs >= 500) {
+  if (orbs >= 50000) {
     badge3.classList.remove('visually-hidden');
     badge3.classList.add('bounce');
   }
-  if (orbs >= 108) {
+  if (orbs >= 100000) {
     badge4.classList.remove('visually-hidden');
     badge4.classList.add('bounce');
   }
-  if (clickCountBonus >= 10) {
+  if (clickCountBonus >= 5000) {
     pickBadge.classList.remove('visually-hidden');
     pickBadge.classList.add('bounce');
   }
 
-  if (laserCountBonus >= 10) {
+  if (laserCountBonus >= 3500) {
     laserBadge.classList.remove('visually-hidden');
     laserBadge.classList.add('bounce');
   }
@@ -701,5 +705,5 @@ function badgeReveal() {
 
 setInterval(collectAutoUpgrades, 1000);
 // setInterval(timer, 1000);
-
+loadProfile()
 drawCounts();
