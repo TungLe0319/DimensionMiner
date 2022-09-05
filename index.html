@@ -57,12 +57,12 @@
       <!-- NOTE CURSOR TEST -->
 <div class="cursor" style="top: 304px; left:888px"></div>
     <header class="container-fluid">
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12 text-center bg-dark text-light">
           <h1>MOON MINER TUNG</h1>
           
         </div>
-      </div>
+      </div> -->
     </header>
    
 <!-- --------------------------------------------- -->
@@ -261,22 +261,24 @@
           </div>
           <div class="row ">
             <!-- SECTION COLLECTED OVER ALL TIME -->
-            <div class="col-md-12">
-              <small>
-                <small class="text-light"> Orbs Collected Over All Time</small><br>
-                <span id="totalOrb-amount" class="text-info numberFont fs-1">
-                <p>0</p>
-                </span>
-              </small>
-            </div>
+            
           </div>
             <!-- MAIN SECTION -->
-      <section class="container  bounce">
-        <div class="row justify-content-evenly">
+      <section class="container-fluid  bounce">
+        <div class="row justify-content-start">
+          <div class="col-md-3 me-5">
+            <small>
+              <small class="text-light"> Orbs Collected Over All Time</small><br>
+              <span id="totalOrb-amount" class="text-info numberFont fs-1">
+              <p>0</p>
+              </span>
+            </small>
+          </div>
           <div
             id="cookie"
             onclick="mine()"
             class="orb col-md-3 d-flex justify-content-center heart "
+            style="margin-left: 7rem;"
           >
             <!-- GIF IMAGE HERE -->
          <img
@@ -351,7 +353,7 @@
      
 
       <!-- NOTE  UPGRADES -->
-      <section class="container-fluid bounce position-absolute bottom-0">
+      <section class="container-fluid bounce ">
         <div class="row justify-content-center">
           <!-- -------------------------------- -->
 
@@ -374,13 +376,13 @@
             </div>
           </div>
           <div
-            class="orbAmount col-md-2 bg-dark text-light border border-light rounded-top d-flex justify-content-evenly fs-2 mx-1"
+            class="orbAmount col-md-2 bg-dark text-light border border-light rounded-top d-flex justify-content-evenly  mx-1"
           >
             <span
               ><img
                 src="https://media2.giphy.com/media/3o6vXTpomeZEyxufGU/giphy.gif?cid=790b761154686d361fb0f07e555bc4939434f436caa17941&rid=giphy.gif&ct=g"
                 alt=""
-                class=" heart rounded-circle shadow-filter"
+                class="pt-3 heart rounded-circle shadow-filter"
                 style="width: 3rem"
               />'s:</span
             >
@@ -389,9 +391,7 @@
             <span id="orb-amount" class="text-danger numberFont fs-1">
               <p>0</p></span>
             <br>
-            <span id="totalOrb-amount" class="text-info numberFont fs-1"
-              ><p>0</p></span
-            >
+           
           </div>
           <div
             class="col-md-3 bg-danger border border-light rounded-top d-flex justify-content-evenly"
