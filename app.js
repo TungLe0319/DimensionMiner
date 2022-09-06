@@ -1,8 +1,8 @@
 let clickUpgrades = [
-  { name: 'pickaxe', price: 1, quantity: 0, multiplier: 5 },
-  { name: 'megapickaxe', price: 1000, quantity: 0, multiplier: 10 },
-  { name: 'ultrapickaxe', price: 5000, quantity: 0, multiplier: 20 },
-  { name: 'makeADeal', price: 1, quantity: 0, multiplier: 2000 },
+  { name: 'pickaxe', price: 10, quantity: 0, multiplier: 5 },
+  { name: 'megapickaxe', price: 1000, quantity: 0, multiplier: 100 },
+  { name: 'ultrapickaxe', price: 5000, quantity: 0, multiplier: 1000 },
+  { name: 'makeADeal', price: 100000, quantity: 0, multiplier: 2000 },
 ];
 
 let automaticUpgrades = [
@@ -10,7 +10,7 @@ let automaticUpgrades = [
   { name: 'megalaser', price: 500, quantity: 0, multiplier: 75 },
   { name: 'ultralaser', price: 1000, quantity: 0, multiplier: 100 },
   { name: 'specialGun', price: 10000, quantity: 0, multiplier: 1000 },
-  { name: 'callForHelp', price: 5000, quantity: 0, multiplier: 500 },
+  { name: 'callForHelp', price: 50000, quantity: 0, multiplier: 2000 },
 ];
 
 // --------------------------------------------------------------
@@ -87,7 +87,7 @@ let specialGunID = document.getElementById('special1');
 let callForHelpID = document.getElementById('special2');
 let makeADealID = document.getElementById('special3');
 // STUB FOR TIMER
-let timerSeconds = 3;
+let timerSeconds = 1;
 const audio = new Audio();
 audio.src = './resources/ClickSound.wav';
 // ------------------------------------------------------
@@ -296,7 +296,7 @@ function autoUpgradesLaser(name) {
     laser.quantity++;
 
     laserCountBonus += laser.multiplier;
-    laser.pr += laser.quantity*3
+    laser.price += laser.quantity*3
   }
 
   drawCounts();
@@ -378,7 +378,7 @@ function timing() {
    let timerDOM = document.getElementById('timer'); 
    timerSeconds--; 
   if (timerSeconds < 0) {
-    timerSeconds = 3;
+    timerSeconds = 1;
   }
   timerDOM.innerText = timerSeconds;
 
@@ -450,59 +450,59 @@ function addLaser() {
 
 
 function changeImage() {
-  if (orbs >= 1000) {
+  if (orbs >= 8500) {
     atomOrbDOM.src = 'https://i.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.webp';
   
   }
-  if (orbs >= 2000) {
+  if (orbs >= 20000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/5Rg9bh6LyLKuY/giphy.webp';
   }
-  if (orbs >= 4000) {
+  if (orbs >= 44000) {
     atomOrbDOM.src =
       'https://media1.giphy.com/media/dkPXar0zpixmA1Pqw0/giphy.gif?cid=ecf05e47k15dvss3xmpuj6gftxjj4i9peyuhmidcpvhldp4p&rid=giphy.gif&ct=g';
   }
-  if (orbs >= 5000) {
+  if (orbs >= 70000) {
     atomOrbDOM.src =
       'https://media3.giphy.com/media/GLIjqI7Q7aha81olc5/giphy.gif?cid=790b7611db710ec442cc6c216c9a31585ab6b66bc47fea5e&rid=giphy.gif&ct=g';
   }
-  if (orbs >= 7000) {
+  if (orbs >= 100000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/vCIKY5e444uNi5VFT2/giphy.webp';
   }
-  if (orbs >= 8000) {
+  if (orbs >= 200000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/otzvbOMu2qSVMOoTTX/giphy.webp';
   }
-  if (orbs >= 12000) {
+  if (orbs >= 300000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/l41m5M6KnkGywFyXS/giphy.webp';
   }
-  if (orbs >= 15000) {
+  if (orbs >= 400000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/hq64aPc8ExJpiXgRtR/giphy.webp';
   }
-  if (orbs >= 25000) {
+  if (orbs >= 500000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/GRmgmqEbC3oMRL2uQq/giphy.webp';
   }
-  if (orbs >= 28000) {
+  if (orbs >= 600000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/s5arkl7ICEsyMsyUXA/giphy.webp';
   }
-  if (orbs >= 40000) {
+  if (orbs >= 750000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/fdS69MmVdRN5hE1Lv7/giphy.webp';
   }
-  if (orbs >= 45000) {
+  if (orbs >= 900000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/fjxtT75gj7LrN3AHT3/giphy.webp';
   }
-  if (orbs >= 70000) {
+  if (orbs >= 1000000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/fjxtT75gj7LrN3AHT3/giphy.webp';
   }
-  if (orbs >= 100000) {
+  if (orbs >= 1125000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/7SKOwf1nD6j6XhfLMG/giphy.webp';
   }
-  if (orbs >= 150000) {
+  if (orbs >= 1500000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/kAQmvq1JXvca8fdGf4/giphy.webp';
   }
   
-  if (orbs >= 250000) {
+  if (orbs >= 2000000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/xaQGyMzdEoWoGBs0ow/giphy.webp';
   }
-  if (orbs >= 300000) {
+  if (orbs >= 3000000) {
     atomOrbDOM.src = 'https://i.giphy.com/media/3PUzAcNsqoaDjXW3Pn/giphy.webp';
    
   }
@@ -640,15 +640,15 @@ function badgeReveal() {
   let boss6 = document.getElementById('boss6');
   let boss7 = document.getElementById('boss7');
   let theGirl = document.getElementById('theGirl');
-  if (orbs >= 10000) {
+  if (orbs >= 100000) {
     badge1.classList.remove('visually-hidden');
     badge1.classList.add('bounce');
   }
-  if (orbs >= 20000) {
+  if (orbs >= 500000) {
     badge2.classList.remove('visually-hidden');
     badge2.classList.add('bounce');
   }
-  if (orbs >= 50000) {
+  if (orbs >= 1000000) {
     badge3.classList.remove('visually-hidden');
     badge3.classList.add('bounce');
   }
@@ -661,39 +661,39 @@ function badgeReveal() {
     pickBadge.classList.add('bounce');
   }
 
-  if (laserCountBonus >= 3500) {
+  if (laserCountBonus >= 10000) {
     laserBadge.classList.remove('visually-hidden');
     laserBadge.classList.add('bounce');
   }
-  if (orbs >= 100) {
+  if (orbs >= 20000) {
     boss1.classList.remove('visually-hidden');
     boss1.classList.add('bounce');
   }
-  if (orbs >= 100) {
+  if (orbs >= 70000) {
     boss2.classList.remove('visually-hidden');
     boss2.classList.add('bounce');
   }
-  if (orbs >= 100) {
+  if (orbs >= 200000) {
     boss3.classList.remove('visually-hidden');
     boss3.classList.add('bounce');
   }
-  if (orbs >= 100) {
+  if (orbs >= 400000) {
     boss4.classList.remove('visually-hidden');
     boss4.classList.add('bounce');
   }
-  if (orbs >= 100) {
+  if (orbs >= 600000 ){
     boss5.classList.remove('visually-hidden');
     boss5.classList.add('bounce');
   }
-  if (orbs >= 100) {
+  if (orbs >= 900000) {
     boss6.classList.remove('visually-hidden');
     boss6.classList.add('bounce');
   }
-  if (orbs >= 100) {
+  if (orbs >=  1125000) {
     boss7.classList.remove('visually-hidden');
     boss7.classList.add('bounce');
   }
-  if (orbs >= 100) {
+  if (orbs >=3000000) {
     theGirl.classList.remove('visually-hidden');
     theGirl.classList.add('bounce');
   }
