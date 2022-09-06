@@ -10,7 +10,7 @@ let automaticUpgrades = [
   { name: 'megalaser', price: 500, quantity: 0, multiplier: 75 },
   { name: 'ultralaser', price: 1000, quantity: 0, multiplier: 100 },
   { name: 'specialGun', price: 10000, quantity: 0, multiplier: 1000 },
-  { name: 'callForHelp', price: 50000, quantity: 0, multiplier: 2000 },
+  { name: 'callForHelp', price: 25000, quantity: 0, multiplier: 2000 },
 ];
 
 // --------------------------------------------------------------
@@ -91,7 +91,7 @@ let timerSeconds = 1;
 const audio = new Audio();
 audio.src = './resources/ClickSound.wav';
 // ------------------------------------------------------
-
+loadProfile()
 // -----------------------------------------------------------
 function getStarted() {
   let beginning = document.getElementById('welcomeCard');
@@ -345,9 +345,9 @@ function callForHelp(name) {
     callForHelp.quantity++;
     laserCountBonus += callForHelp.multiplier;
     callForHelpBadge.className -= 'visually-hidden';
+    addAlien();
+    addLaser();
   }
-  addAlien();
-  addLaser();
 
   drawCounts();
 }
